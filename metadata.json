@@ -1,0 +1,6 @@
+{
+  "name": "Pomodoro Timer",
+  "description": "A beautiful, minimalist Pomodoro timer designed specifically for students.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
