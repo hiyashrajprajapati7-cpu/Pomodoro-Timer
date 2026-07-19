@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Metadata -->
+    <title>Lost in Time (404) | Aesthetic Pomodoro Timer</title>
+    <meta name="description" content="This moment slipped away. Let's find your way back to your focused study session." />
+    <meta name="robots" content="noindex, follow" />
+
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/src/index.css" />
+
+    <!-- Light/Dark Instant Sync Script -->
+    <script>
+      try {
+        const saved = localStorage.getItem('pomodoro_settings');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    </script>
+  </head>
+  <body class="bg-[#fbf9f4] dark:bg-[#0d0d0d] text-neutral-800 dark:text-neutral-200 min-h-screen flex flex-col justify-between transition-colors duration-300 font-sans selection:bg-amber-500/20 antialiased overflow-x-hidden">
+    
+    <!-- Background Accents -->
+    <div class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-rose-400 to-indigo-500 z-50"></div>
+    <div class="fixed top-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-amber-500/5 dark:bg-amber-500/3 blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-indigo-500/5 dark:bg-indigo-500/3 blur-3xl pointer-events-none"></div>
+
+    <!-- Empty top spacer -->
+    <div></div>
+
+    <!-- Main Content Container -->
+    <main class="relative max-w-lg mx-auto px-6 py-12 text-center z-10 flex flex-col items-center gap-8">
+      
+      <!-- Interactive Decorative Timer Icon with modern float animation -->
+      <div class="relative flex items-center justify-center w-24 h-24 rounded-full border border-neutral-200/40 dark:border-neutral-800/40 bg-white/40 dark:bg-neutral-900/15 backdrop-blur-md shadow-xl select-none group">
+        <span class="text-4xl animate-bounce">⏳</span>
+        <div class="absolute -top-1 -right-1 flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-rose-500"></span>
+        </div>
+      </div>
+
+      <!-- Text Content -->
+      <div class="flex flex-col gap-3">
+        <span class="text-xs font-mono font-bold tracking-[0.2em] text-rose-500 dark:text-rose-400 uppercase">Error 404</span>
+        <h1 class="text-3xl md:text-4xl font-display font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
+          This moment slipped past.
+        </h1>
+        <p class="text-xs md:text-sm text-neutral-500 dark:text-neutral-400 font-sans leading-relaxed">
+          The page you are looking for has either expired, wandered offline, or never existed in this time frame. Let's return to your focus sanctuary and start fresh.
+        </p>
+      </div>
+
+      <!-- Action Button -->
+      <a href="/" class="group flex items-center gap-2 px-5 py-3 rounded-2xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 text-xs font-semibold tracking-tight shadow-md hover:scale-105 active:scale-95 transition-all">
+        <svg class="w-4 h-4 text-amber-500 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        <span>Back to Focus Room</span>
+      </a>
+
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="w-full pb-8 text-center z-10">
+      <span class="text-[10px] text-neutral-400 font-mono">© 2026 Pomodoro Timer. Settle in, breathe deep.</span>
+    </footer>
+
+  </body>
+</html>
