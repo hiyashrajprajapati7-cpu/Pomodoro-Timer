@@ -7,13 +7,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Sun, Moon, Music, Settings, Keyboard, Info, Bell, BellOff,
-  Maximize2, Minimize2, CheckCircle, ExternalLink, HelpCircle, X, Timer
+  Maximize2, Minimize2, CheckCircle, ExternalLink, HelpCircle, X, Timer, ListTodo
 } from 'lucide-react';
-import { TimerMode, TimerState, AppSettings, SoundConfig, SessionHistory } from './types';
+import { TimerMode, TimerState, AppSettings, SoundConfig, SessionHistory, Task } from './types';
 import { audioEngine } from './lib/audioEngine';
 import { TimerCircle } from './components/TimerCircle';
 import { SoundSelector } from './components/SoundSelector';
 import { SettingsModal } from './components/SettingsModal';
+import { TaskListModal } from './components/TaskListModal';
 import { InfoSections } from './components/InfoSections';
 import { FooterBanner } from './components/FooterBanner';
 
@@ -104,6 +105,20 @@ export default function App() {
   const [isSoundsOpen, setIsSoundsOpen] = useState<boolean>(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isShortcutsOpen, setIsShortcutsOpen] = useState<boolean>(false);
+  const [isTasksOpen, setIsTasksOpen] = useState<boolean>(false);
+
+  // Tasks state
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const saved = localStorage.getItem('pomodoro_tasks');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        return [];
+      }
+    }
+    return [];
+  });
 
   // Toasts state
   const [toasts, setToasts] = useState<ToastNotification[]>([]);
@@ -173,6 +188,79 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('pomodoro_history', JSON.stringify(sessionsCompleted));
   }, [sessionsCompleted]);
+
+  useEffect(() => {
+    localStorage.setItem('pomodoro_tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  const handleAddTask = (text: string) => {
+    const newTask: Task = {
+      id: Math.random().toString(36).substring(2, 9),
+      text,
+      completed: false,
+      createdAt: new Date().toISOString(),
+      isFocused: tasks.filter(t => !t.completed).length === 0, // Auto-focus if it is the first active task
+    };
+    setTasks(prev => [...prev, newTask]);
+    showToast({
+      id: Math.random().toString(),
+      message: 'Task Added',
+      submessage: `"${text}" is now on your focus list.`,
+      type: 'success',
+    });
+  };
+
+  const handleToggleTask = (id: string) => {
+    setTasks(prev => {
+      const updated = prev.map(task => {
+        if (task.id === id) {
+          const completed = !task.completed;
+          return { 
+            ...task, 
+            completed, 
+            isFocused: completed ? false : task.isFocused 
+          };
+        }
+        return task;
+      });
+
+      // If we just uncompleted a task and there's no focused task, focus this one
+      const hasFocused = updated.some(t => t.isFocused && !t.completed);
+      if (!hasFocused) {
+        const firstActive = updated.find(t => !t.completed);
+        if (firstActive) {
+          firstActive.isFocused = true;
+        }
+      }
+      return updated;
+    });
+  };
+
+  const handleDeleteTask = (id: string) => {
+    setTasks(prev => {
+      const filtered = prev.filter(task => task.id !== id);
+      // If the deleted task was focused, focus the next active task if available
+      const wasFocused = prev.find(t => t.id === id)?.isFocused;
+      if (wasFocused && filtered.length > 0) {
+        const firstActive = filtered.find(t => !t.completed);
+        if (firstActive) {
+          firstActive.isFocused = true;
+        }
+      }
+      return filtered;
+    });
+  };
+
+  const handleSetFocusedTask = (id: string | null) => {
+    setTasks(prev => prev.map(task => ({
+      ...task,
+      isFocused: task.id === id ? true : false
+    })));
+  };
+
+  const handleClearCompletedTasks = () => {
+    setTasks(prev => prev.filter(task => !task.completed));
+  };
 
   // 6. Handle custom settings save updates
   const handleUpdateSettings = (newSettings: AppSettings) => {
@@ -458,6 +546,7 @@ export default function App() {
 
   const todayCount = getTodaySessionsCount();
   const targetArray = Array.from({ length: settings.targetSessions });
+  const activeTask = tasks.find(t => t.isFocused && !t.completed);
 
   return (
     <div className={`h-[100dvh] w-screen bg-[#FAF5EC] dark:bg-neutral-950 text-neutral-800 dark:text-neutral-100 transition-colors duration-500 font-sans relative flex flex-col ${isFullscreen ? 'overflow-hidden' : 'overflow-y-auto snap-y snap-mandatory scroll-smooth'}`}>
@@ -482,20 +571,24 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="w-full max-w-[1440px] mx-auto px-8 md:px-12 py-7 flex items-center justify-between border-b border-neutral-100/10"
+            className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 md:px-12 py-3.5 sm:py-7 flex items-center justify-between border-b border-neutral-100/10"
           >
             {/* Logo */}
-            <div className="flex items-center gap-2">
-              <span className={`flex items-center justify-center w-8 h-8 rounded-xl font-mono font-bold text-sm tracking-tight shadow-md transition-all duration-500 ${
-                mode === 'focus'
-                  ? 'bg-amber-500 text-white shadow-[0_0_15px_rgba(245,158,11,0.55)] border border-amber-400/30'
-                  : mode === 'shortBreak'
-                  ? 'bg-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.55)] border border-emerald-400/30'
-                  : 'bg-indigo-500 text-white shadow-[0_0_15px_rgba(99,102,241,0.55)] border border-indigo-400/30'
-              }`}>
-                <Timer className="w-4.5 h-4.5 text-white animate-pulse" />
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="flex items-center justify-center w-8.5 h-8.5 rounded-xl bg-neutral-950 border border-neutral-800/80 shadow-[0_0_15px_rgba(234,179,8,0.5)] dark:shadow-[0_0_18px_rgba(234,179,8,0.65)] hover:shadow-[0_0_25px_rgba(234,179,8,0.85)] transition-all duration-500 select-none relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-yellow-500/10 to-transparent pointer-events-none" />
+                <svg viewBox="0 0 100 100" className="w-5 h-5 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.75)] animate-pulse" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Top button/knob of the timer */}
+                  <rect x="36" y="10" width="28" height="10" rx="5" fill="currentColor" />
+                  {/* Small neck connecting knob to ring */}
+                  <rect x="46" y="18" width="8" height="6" fill="currentColor" />
+                  {/* Main timer circular ring */}
+                  <circle cx="50" cy="56" r="30" stroke="currentColor" strokeWidth="8" />
+                  {/* Hands/indicator inside */}
+                  <line x1="50" y1="56" x2="68" y2="38" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
+                </svg>
               </span>
-              <span className={`text-sm font-bold tracking-tight font-sans transition-all duration-500 ${
+              <span className={`hidden min-[420px]:inline text-sm font-bold tracking-tight font-sans transition-all duration-500 ${
                 mode === 'focus'
                   ? 'text-amber-600 dark:text-amber-400 drop-shadow-[0_0_6px_rgba(245,158,11,0.45)]'
                   : mode === 'shortBreak'
@@ -507,7 +600,7 @@ export default function App() {
             </div>
 
             {/* Utility Controls Row */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1 sm:gap-1.5">
               {/* Daily Target Indicators */}
               <button
                 id="target-indicators"
@@ -521,7 +614,7 @@ export default function App() {
                   });
                 }}
                 title={`Daily Focus Target: ${todayCount} / ${settings.targetSessions} sessions`}
-                className={`group px-3 py-2 rounded-xl flex items-center gap-2.5 transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent ${
+                className={`group px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl flex items-center gap-1.5 sm:gap-2.5 transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent ${
                   mode === 'focus'
                     ? 'hover:text-amber-600 hover:border-amber-500/35 dark:hover:text-amber-400 dark:hover:border-amber-400/35 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)]'
                     : mode === 'shortBreak'
@@ -535,7 +628,7 @@ export default function App() {
                     return (
                       <div
                         key={idx}
-                        className={`w-2 h-2 rounded-full border transition-all duration-500 ${
+                        className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full border transition-all duration-500 ${
                           isCompleted
                             ? mode === 'focus'
                               ? 'bg-neutral-500 border-neutral-500 dark:bg-neutral-400 dark:border-neutral-400 group-hover:bg-amber-500 group-hover:border-amber-500 group-hover:shadow-[0_0_8px_rgba(245,158,11,0.6)]'
@@ -564,7 +657,7 @@ export default function App() {
                 <button
                   onClick={requestNotificationPermission}
                   title="Enable browser notifications"
-                  className={`p-2 rounded-xl text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300 btn-glass-fluid transition-all duration-300 active:scale-95 hover:scale-105 border border-transparent ${
+                  className={`p-1.5 sm:p-2 rounded-xl text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300 btn-glass-fluid transition-all duration-300 active:scale-95 hover:scale-105 border border-transparent ${
                     mode === 'focus'
                       ? 'hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/30 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)]'
                       : mode === 'shortBreak'
@@ -585,7 +678,7 @@ export default function App() {
                   audioEngine.playSubtleClick();
                 }}
                 title="Focus sounds mixer"
-                className={`group p-2 rounded-xl flex items-center gap-1.5 text-xs font-semibold tracking-tight btn-glass-fluid transition-all duration-300 active:scale-95 hover:scale-105 border ${
+                className={`group p-1.5 sm:p-2 rounded-xl btn-glass-fluid transition-all duration-200 active:scale-95 hover:scale-105 border ${
                   sounds.some(s => s.isPlaying)
                     ? mode === 'focus'
                       ? 'bg-amber-500/15 dark:bg-amber-400/25 border-amber-500/50 dark:border-amber-400/50 text-amber-600 dark:text-amber-400 font-bold shadow-[0_0_15px_rgba(245,158,11,0.45)]'
@@ -593,30 +686,25 @@ export default function App() {
                       ? 'bg-emerald-500/15 dark:bg-emerald-400/25 border-emerald-500/50 dark:border-emerald-400/50 text-emerald-600 dark:text-emerald-400 font-bold shadow-[0_0_15px_rgba(16,185,129,0.45)]'
                       : 'bg-indigo-500/15 dark:bg-indigo-400/25 border-indigo-500/50 dark:border-indigo-400/50 text-indigo-600 dark:text-indigo-400 font-bold shadow-[0_0_15px_rgba(99,102,241,0.45)]'
                     : mode === 'focus'
-                    ? 'text-neutral-500 dark:text-neutral-400 hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/30 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)] border-transparent'
+                    ? 'text-neutral-500 dark:text-neutral-400 hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/30 hover:shadow-[0_0_15px_rgba(245,158,11,0.35)] border-transparent'
                     : mode === 'shortBreak'
-                    ? 'text-neutral-500 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:shadow-[0_0_12px_rgba(16,185,129,0.25)] border-transparent'
-                    : 'text-neutral-500 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-500/30 hover:shadow-[0_0_12px_rgba(99,102,241,0.25)] border-transparent'
+                    ? 'text-neutral-500 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:shadow-[0_0_15px_rgba(16,185,129,0.35)] border-transparent'
+                    : 'text-neutral-500 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-500/30 hover:shadow-[0_0_15px_rgba(99,102,241,0.35)] border-transparent'
                 }`}
               >
-                <Music className={`w-4 h-4 transition-transform duration-300 group-hover:scale-110 ${
+                <Music className={`w-4 h-4 transition-all duration-200 group-hover:scale-110 ${
                   sounds.some(s => s.isPlaying)
                     ? mode === 'focus'
-                      ? 'text-amber-600 dark:text-amber-400'
+                      ? 'text-amber-600 dark:text-amber-400 drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
                       : mode === 'shortBreak'
-                      ? 'text-emerald-600 dark:text-emerald-400'
-                      : 'text-indigo-600 dark:text-indigo-400'
-                    : 'text-neutral-500 dark:text-neutral-450'
+                      ? 'text-emerald-600 dark:text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]'
+                      : 'text-indigo-600 dark:text-indigo-400 drop-shadow-[0_0_8px_rgba(99,102,241,0.6)]'
+                    : mode === 'focus'
+                    ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
+                    : mode === 'shortBreak'
+                    ? 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]'
+                    : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.6)]'
                 }`} />
-                <span className={`hidden sm:inline transition-all duration-300 ${
-                  sounds.some(s => s.isPlaying)
-                    ? mode === 'focus'
-                      ? 'drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]'
-                      : mode === 'shortBreak'
-                      ? 'drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]'
-                      : 'drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]'
-                    : ''
-                }`}>Focus Sounds</span>
               </button>
 
               {/* Theme Switcher */}
@@ -630,18 +718,30 @@ export default function App() {
                   audioEngine.playSubtleClick();
                 }}
                 title={settings.theme === 'light' ? "Switch to Dark Mode" : "Switch to Light Mode"}
-                className={`p-2 rounded-xl text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 btn-glass-fluid transition-all duration-300 active:scale-95 hover:scale-105 border border-transparent ${
+                className={`group p-1.5 sm:p-2 rounded-xl text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 btn-glass-fluid transition-all duration-200 active:scale-95 hover:scale-105 border border-transparent ${
                   mode === 'focus'
-                    ? 'hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/30 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)]'
+                    ? 'hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/30 hover:shadow-[0_0_15px_rgba(245,158,11,0.35)]'
                     : mode === 'shortBreak'
-                    ? 'hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:shadow-[0_0_12px_rgba(16,185,129,0.25)]'
-                    : 'hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-500/30 hover:shadow-[0_0_12px_rgba(99,102,241,0.25)]'
+                    ? 'hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/30 hover:shadow-[0_0_15px_rgba(16,185,129,0.35)]'
+                    : 'hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-500/30 hover:shadow-[0_0_15px_rgba(99,102,241,0.35)]'
                 }`}
               >
                 {settings.theme === 'light' ? (
-                  <Moon className="w-4 h-4" />
+                  <Moon className={`w-4 h-4 transition-all duration-200 group-hover:scale-110 ${
+                    mode === 'focus'
+                      ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
+                      : mode === 'shortBreak'
+                      ? 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]'
+                      : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.6)]'
+                  }`} />
                 ) : (
-                  <Sun className="w-4 h-4" />
+                  <Sun className={`w-4 h-4 transition-all duration-200 group-hover:scale-110 ${
+                    mode === 'focus'
+                      ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
+                      : mode === 'shortBreak'
+                      ? 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]'
+                      : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.6)]'
+                  }`} />
                 )}
               </button>
 
@@ -653,7 +753,7 @@ export default function App() {
                   audioEngine.playSubtleClick();
                 }}
                 title="Timer and Shortcut settings"
-                className={`group p-2 rounded-xl transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent ${
+                className={`group p-1.5 sm:p-2 rounded-xl transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent ${
                   mode === 'focus'
                     ? 'hover:text-amber-600 hover:border-amber-500/35 dark:hover:text-amber-400 dark:hover:border-amber-400/35 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)]'
                     : mode === 'shortBreak'
@@ -668,6 +768,42 @@ export default function App() {
                     ? 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]'
                     : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.6)]'
                 }`} />
+              </button>
+
+              {/* Focus Tasks Button */}
+              <button
+                id="focus-tasks-btn"
+                onClick={() => {
+                  setIsTasksOpen(true);
+                  audioEngine.playSubtleClick();
+                }}
+                title="Manage focus tasks"
+                className={`group p-1.5 sm:p-2 rounded-xl transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent relative ${
+                  mode === 'focus'
+                    ? 'hover:text-amber-600 hover:border-amber-500/35 dark:hover:text-amber-400 dark:hover:border-amber-400/35 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)]'
+                    : mode === 'shortBreak'
+                    ? 'hover:text-emerald-600 hover:border-emerald-500/35 dark:hover:text-emerald-400 dark:hover:border-emerald-400/35 hover:shadow-[0_0_12px_rgba(16,185,129,0.25)]'
+                    : 'hover:text-indigo-600 hover:border-indigo-500/35 dark:hover:text-indigo-400 dark:hover:border-indigo-400/35 hover:shadow-[0_0_12px_rgba(99,102,241,0.25)]'
+                }`}
+              >
+                <ListTodo className={`w-4 h-4 transition-all duration-300 text-neutral-500 dark:text-neutral-400 ${
+                  mode === 'focus'
+                    ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
+                    : mode === 'shortBreak'
+                    ? 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]'
+                    : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.6)]'
+                }`} />
+                {tasks.filter(t => !t.completed).length > 0 && (
+                  <span className={`absolute -top-1 -right-1 flex h-4 min-w-[16px] px-1 items-center justify-center text-[8px] font-mono font-bold text-white rounded-full ${
+                    mode === 'focus'
+                      ? 'bg-amber-500 shadow-[0_0_6px_rgba(245,158,11,0.6)]'
+                      : mode === 'shortBreak'
+                      ? 'bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.6)]'
+                      : 'bg-indigo-500 shadow-[0_0_6px_rgba(99,102,241,0.6)]'
+                  }`}>
+                    {tasks.filter(t => !t.completed).length}
+                  </span>
+                )}
               </button>
             </div>
           </motion.header>
@@ -698,7 +834,7 @@ export default function App() {
           )}
         </AnimatePresence>
 
-        <div className="w-full max-w-md mx-auto flex flex-col items-center gap-8 sm:gap-10">
+        <div className="w-full max-w-md mx-auto flex flex-col items-center gap-5 sm:gap-10">
           
           {/* Main Countdown Timer Circle */}
           <TimerCircle
@@ -711,6 +847,54 @@ export default function App() {
             isFullscreen={isFullscreen}
             onToggleFullscreen={toggleFullscreenFocus}
           />
+
+          {/* Active Focus Task Banner */}
+          <AnimatePresence>
+            {activeTask && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: -8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className={`flex items-center justify-between gap-3 px-5 py-2.5 rounded-2xl border bg-[#FCFAF2]/80 dark:bg-neutral-900/60 backdrop-blur-md shadow-sm max-w-sm w-full mx-auto -mt-2 sm:-mt-6 transition-all ${
+                  mode === 'focus'
+                    ? 'border-amber-500/15 shadow-amber-500/5'
+                    : mode === 'shortBreak'
+                    ? 'border-emerald-500/15 shadow-emerald-500/5'
+                    : 'border-indigo-500/15 shadow-indigo-500/5'
+                }`}
+              >
+                <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 relative flex ${
+                    mode === 'focus'
+                      ? 'bg-amber-500'
+                      : mode === 'shortBreak'
+                      ? 'bg-emerald-500'
+                      : 'bg-indigo-500'
+                  }`}>
+                    <span className={`absolute -inset-0.5 rounded-full animate-ping opacity-60 ${
+                      mode === 'focus'
+                        ? 'bg-amber-400'
+                        : mode === 'shortBreak'
+                        ? 'bg-emerald-400'
+                        : 'bg-indigo-400'
+                    }`} />
+                  </span>
+                  <span className="text-xs font-semibold text-neutral-800 dark:text-neutral-200 truncate leading-relaxed">
+                    Focusing on: <strong className="text-neutral-950 dark:text-neutral-100 font-bold">{activeTask.text}</strong>
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleToggleTask(activeTask.id)}
+                  title="Mark task as completed"
+                  className="flex items-center justify-center rounded-lg px-2.5 py-1 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-all text-[9px] font-bold uppercase tracking-wider text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 active:scale-95 cursor-pointer"
+                >
+                  Done
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Mode Selector Row (Focus, Short Break, Long Break) - hidden in Fullscreen */}
           <AnimatePresence>
@@ -868,6 +1052,7 @@ export default function App() {
         onClose={() => setIsSoundsOpen(false)}
         sounds={sounds}
         setSounds={setSounds}
+        mode={mode}
       />
 
       {/* Timer / App Settings drawer */}
@@ -877,6 +1062,19 @@ export default function App() {
         settings={settings}
         onUpdateSettings={handleUpdateSettings}
         onClearSessions={handleClearSessions}
+        mode={mode}
+      />
+
+      {/* Focus Tasks Modal */}
+      <TaskListModal
+        isOpen={isTasksOpen}
+        onClose={() => setIsTasksOpen(false)}
+        tasks={tasks}
+        onAddTask={handleAddTask}
+        onToggleTask={handleToggleTask}
+        onDeleteTask={handleDeleteTask}
+        onSetFocusedTask={handleSetFocusedTask}
+        onClearCompleted={handleClearCompletedTasks}
         mode={mode}
       />
 

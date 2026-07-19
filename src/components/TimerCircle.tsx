@@ -80,7 +80,7 @@ export const TimerCircle: React.FC<TimerCircleProps> = ({
     <div className="flex flex-col items-center justify-center select-none">
       {/* Interactive Timer Block */}
       <div 
-        className={`relative w-72 h-72 sm:w-85 sm:h-85 flex items-center justify-center rounded-full transition-all duration-500 ${styles.glow} shadow-2xl`}
+        className={`relative w-64 h-64 min-[380px]:w-72 min-[380px]:h-72 sm:w-85 sm:h-85 flex items-center justify-center rounded-full transition-all duration-500 ${styles.glow} shadow-2xl`}
         id="timer-container-circle"
       >
         {/* Soft Glassmorphism background inside the circle */}
@@ -152,7 +152,7 @@ export const TimerCircle: React.FC<TimerCircleProps> = ({
       </div>
 
       {/* Primary Action Controls Strip */}
-      <div className="flex items-center gap-4 mt-8 sm:mt-10" id="timer-controls">
+      <div className="flex items-center gap-4 mt-5 sm:mt-10" id="timer-controls">
         {/* Reset Button */}
         <button
           onClick={onReset}

@@ -29,3 +29,12 @@ export interface SessionHistory {
   mode: TimerMode;
   duration: number;
 }
+
+export interface Task {
+  id: string;
+  text: string;
+  completed: boolean;
+  createdAt: string;
+  isFocused?: boolean;
+}
+

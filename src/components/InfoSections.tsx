@@ -138,8 +138,48 @@ export function InfoSections({ mode }: InfoSectionsProps) {
 
   const faqs: FAQItem[] = [
     {
-      question: 'What is the Pomodoro Technique and how does it prevent burnout?',
-      answer: 'Created by Francesco Cirillo in the late 1980s, the Pomodoro Technique is a time management philosophy that breaks work into focused 25-minute intervals (called "Pomodoros") separated by 5-minute rests. By scheduling regular intervals of deep focus alongside restorative mini-breaks, it preserves executive function, eliminates cognitive fatigue, and prevents mental burnout.'
+      question: 'What is a Pomodoro Timer?',
+      answer: 'A Pomodoro Timer is a minimalist time-management tool designed to structure your work or study sessions into highly focused intervals (traditionally 25 minutes long) called "Pomodoros." These periods of intense cognitive activity are separated by short restorative breaks, allowing the brain to consolidate learning, restore executive function, and prevent mental exhaustion.'
+    },
+    {
+      question: 'Is Pomodoro 50/10 or 25/5 better?',
+      answer: 'Neither method is universally superior; it depends entirely on your task complexity and personal focus limits. The classic 25/5 schedule (25 minutes of focus, 5 minutes of rest) is perfect for overcoming procrastination, quick drills, or repetitive studies. The 50/10 schedule is ideal for deeper, complex cognitive tasks like writing, designing, or programming, where getting into a state of "flow" requires a longer uninterrupted window of time.'
+    },
+    {
+      question: 'What is the Pomodoro 90 20 rule?',
+      answer: 'The Pomodoro 90/20 rule, also known as the Ultradian Rhythm technique, involves working with undivided attention for 90 minutes followed by a deep restorative 20-minute break. This cycle aligns with the human body\'s natural ultradian rhythm waves of cognitive energy. Practicing 90/20 blocks is fantastic for heavy focus sessions and prevents long-term executive fatigue.'
+    },
+    {
+      question: 'Does Elon Musk use Pomodoro?',
+      answer: 'No, Elon Musk does not use the standard Pomodoro Technique. Instead, he famously uses a system called "Time Blocking" or "Time Boxing," where he schedules his entire day in high-intensity, pre-defined 5-minute segments. Although the scale is tighter, both methods share the identical core philosophy: eliminating multitasking by committing 100% of your attention to a single dedicated block.'
+    },
+    {
+      question: 'How many pomodoros is 1 hour?',
+      answer: 'In exactly 1 hour (60 minutes), you can complete 2 standard Pomodoro rounds. Each complete round consists of a 25-minute focused work session followed by a 5-minute short restorative break, which sums to 30 minutes. Completing two cycles back-to-back perfectly fills a 60-minute window.'
+    },
+    {
+      question: 'Is Pomodoro 20 minutes or 25 minutes?',
+      answer: 'The official, classic Pomodoro session is exactly 25 minutes long, designed by Francesco Cirillo. However, modern productivity apps allow you to tailor the duration to your workflow—such as 20-minute cycles for lightweight tasks, or 50-minute blocks for deep work. The essential rule is to maintain a strict, structured boundary between active attention and complete rest.'
+    },
+    {
+      question: 'Why is it called a Pomodoro Timer?',
+      answer: 'The system is named after the tomato-shaped kitchen timer ("pomodoro" means tomato in Italian) that its inventor, Francesco Cirillo, used during his university studies to track his focused blocks. The tomato represents any dedicated interval of uninterrupted attention.'
+    },
+    {
+      question: 'How does a Pomodoro Timer work?',
+      answer: 'A Pomodoro Timer works by leveraging structured timing blocks and neural intervals to optimize focus: 1) Choose one single task on your checklist. 2) Start the 25-minute study timer. 3) Work with singular commitment until the bell rings. 4) Take a 5-minute break to detach from screens. 5) Repeat this cycle 4 times, then reward yourself with a long 15–30 minute break.'
+    },
+    {
+      question: 'How to use Pomodoro Timer apps effectively?',
+      answer: 'To use Pomodoro Timer apps effectively, start by removing digital friction—turn off notifications, put your phone away, and close unrelated tabs. Next, activate ambient background noises or science-backed binaural alpha waves to block background distractions. Finally, respect your breaks; do not scroll social media or read work emails during your 5-minute rests. Instead, stretch, walk, or drink water to let your brain\'s default mode network recharge.'
+    },
+    {
+      question: 'How to add a Pomodoro Timer to Notion?',
+      answer: 'Adding our cute, aesthetic Pomodoro Timer to Notion is extremely easy. Simply copy our website URL (https://pomodoro-timer.online/ or your custom shared preview link), open your Notion workspace page, paste the link where you want the timer, and select "Create Embed" from the pop-up menu. You can then resize the block to beautifully position the minimalist timer directly next to your database, notes, or planner.'
+    },
+    {
+      question: 'How do you make a Pomodoro Timer?',
+      answer: 'A custom Pomodoro Timer is made using modern web standards like React, TypeScript, and Tailwind CSS. The core engine uses a stateful countdown countdown loop (via setInterval), wrapped in an aesthetic visual interface with custom ambient audio channels and local storage persistence. This application is an example of an advanced, modern study timer built using responsive, high-performance web engineering.'
     },
     {
       question: 'How do Focus Soundscapes and Binaural Beats enhance deep work?',
@@ -318,6 +358,75 @@ export function InfoSections({ mode }: InfoSectionsProps) {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* 4. COMPREHENSIVE SEO GUIDE SECTION */}
+      <section className="flex flex-col gap-8 md:gap-12 pt-16 border-t border-neutral-200/20 dark:border-neutral-800/20" id="seo-comprehensive-guide">
+        <div className="max-w-3xl mx-auto flex flex-col gap-6 text-left">
+          <div className="inline-flex items-center justify-center gap-1.5 self-start px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-amber-100 dark:bg-amber-500/10 text-amber-800 dark:text-amber-400 border border-amber-200/20">
+            <Timer className="w-3.5 h-3.5" />
+            <span>Deep Dive Guide</span>
+          </div>
+
+          <h2 className="text-xl md:text-2xl font-display font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
+            The Ultimate Guide to Using the Pomodoro Technique
+          </h2>
+
+          <div className="space-y-6 text-xs md:text-sm text-neutral-500 dark:text-neutral-450 leading-relaxed font-sans">
+            <p>
+              When it comes to boosting productivity and staying inside a flow state, using a high-quality <strong>pomodoro timer</strong> is one of the most effective strategies you can adopt. Whether you are studying for final exams, coding an intensive software program, or writing an article, finding the <strong>best pomodoro timer</strong> that fits your visual setup is crucial. Our <strong>aesthetic pomodoro timer online</strong> is designed specifically to combine minimalist beauty with focus-boosting features. This is more than just a standard kitchen clock; it is a fully integrated workspace companion crafted to optimize your cognitive stamina. As a 100% <strong>free pomodoro timer</strong>, you can access professional deep-focus tools instantly, helping you manage your energy levels day and night.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
+              <div className="p-5.5 rounded-2xl border border-neutral-100 dark:border-neutral-850 bg-neutral-50/50 dark:bg-neutral-900/10">
+                <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 text-xs md:text-sm mb-2 font-mono uppercase tracking-wide flex items-center gap-2">
+                  <span className={`w-1.5 h-1.5 rounded-full ${colors.accent}`} />
+                  Why 25 Minutes Work Blocks?
+                </h3>
+                <p className="text-[11px] md:text-xs leading-relaxed text-neutral-500 dark:text-neutral-450">
+                  At its core, a traditional <strong>pomodoro timer 25 minutes</strong> session breaks down massive, daunting projects into manageable chunks of uninterrupted attention. Modern neuroscience reveals that the human brain can only maintain peak cognitive alertness for about 20 to 30 minutes before fatigue begins to creep in. By setting an <strong>online pomodoro timer</strong> for 25 minutes, you create an artificial deadline that triggers healthy urgency. Once the countdown concludes, a short break allows your brain to reset and store what you just learned.
+                </p>
+              </div>
+
+              <div className="p-5.5 rounded-2xl border border-neutral-100 dark:border-neutral-850 bg-neutral-50/50 dark:bg-neutral-900/10">
+                <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 text-xs md:text-sm mb-2 font-mono uppercase tracking-wide flex items-center gap-2">
+                  <span className={`w-1.5 h-1.5 rounded-full ${colors.accent}`} />
+                  An App Built For True Immersion
+                </h3>
+                <p className="text-[11px] md:text-xs leading-relaxed text-neutral-500 dark:text-neutral-450">
+                  Not all focus applications are created equal. Many online tools are cluttered with ads, complex configurations, or paywalls that break your immersion. When designing this <strong>pomodoro timer app</strong>, we prioritized absolute simplicity and custom audio triggers. Our <strong>free pomodoro timer</strong> combines custom-blended ambient noises, science-backed binaural alpha/gamma waves, and integrated Spotify focus stations to build an impenetrable wall of sound, making it the premier <strong>online pomodoro timer</strong> for daily studying.
+                </p>
+              </div>
+            </div>
+
+            <h3 className="text-xs md:text-sm font-semibold text-neutral-900 dark:text-neutral-100 uppercase tracking-wider font-mono">
+              Tips to Maximize Your Aesthetic Pomodoro Time Sessions
+            </h3>
+
+            <p>
+              To get the absolute most out of your <strong>aesthetic pomodoro timer online</strong> experience, follow these practical steps:
+            </p>
+
+            <ul className="list-disc pl-5 space-y-2.5 text-[11px] md:text-xs text-neutral-550 dark:text-neutral-450">
+              <li>
+                <strong>Prep Your Tasks First:</strong> Before pressing play, list your tasks in our built-in checklist. Never spend your active countdown deciding what to work on.
+              </li>
+              <li>
+                <strong>Commit Fully to the Interval:</strong> If you get a sudden urge to check your phone or look up a random fact, write it down on your scratchpad and instantly return to your active <strong>pomodoro timer</strong> screen.
+              </li>
+              <li>
+                <strong>Protect Your Rest Periods:</strong> Do not stay glued to your screen during the break! Stand up, stretch your back, drink some water, or look out of a window. True rest allows your cognitive reserves to rebuild.
+              </li>
+              <li>
+                <strong>Utilize Audio Shielding:</strong> Put on a pair of noise-canceling headphones, turn on the rain or forest sounds in our ambient mixer, and select one of our curated lofi stations to build your private sanctuary.
+              </li>
+            </ul>
+
+            <p className="pt-2 text-[11px] md:text-xs border-t border-neutral-100 dark:border-neutral-850 text-neutral-400 dark:text-neutral-500 italic">
+              By combining the timeless structure of the classical time-management technique with state-of-the-art sensory tools and clean visual cues, this is the ultimate <strong>pomodoro timer app</strong> engineered to turn procrastination into progress.
+            </p>
+          </div>
         </div>
       </section>
 

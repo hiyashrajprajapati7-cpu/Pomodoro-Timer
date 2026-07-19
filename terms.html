@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Metadata -->
+    <title>Terms & Conditions | Best Aesthetic Pomodoro Study Timer</title>
+    <meta name="description" content="Review our standard Terms of Service and guidelines. Free to use for study, work, and personal focus. Simple, straightforward terms with no catch." />
+    <meta name="keywords" content="pomodoro terms, study timer guidelines, free aesthetic timer terms, online timer licensing" />
+    <meta name="author" content="Yashraj" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/src/index.css" />
+
+    <!-- Light/Dark Instant Sync Script -->
+    <script>
+      try {
+        const saved = localStorage.getItem('pomodoro_settings');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    </script>
+  </head>
+  <body class="bg-[#fbf9f4] dark:bg-[#0d0d0d] text-neutral-800 dark:text-neutral-200 min-h-screen transition-colors duration-300 font-sans selection:bg-amber-500/20 antialiased overflow-x-hidden">
+    
+    <!-- Background Accents -->
+    <div class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-rose-400 to-indigo-500 z-50"></div>
+    <div class="fixed top-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-amber-500/5 dark:bg-amber-500/3 blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-indigo-500/5 dark:bg-indigo-500/3 blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-4xl mx-auto px-6 py-12 md:py-20 z-10">
+      
+      <!-- Back To Home Navigation Header -->
+      <header class="flex items-center justify-between mb-12 md:mb-16">
+        <a href="/" class="group flex items-center gap-2.5 px-4.5 py-2.5 rounded-2xl btn-glass-fluid text-xs font-semibold tracking-tight transition-all duration-300 active:scale-95 hover:scale-105">
+          <svg class="w-4 h-4 text-amber-500 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span class="text-neutral-600 dark:text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-white">Back to Timer</span>
+        </a>
+        
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+          <span class="text-[10px] font-mono font-bold tracking-widest text-neutral-400 uppercase">License Terms</span>
+        </div>
+      </header>
+
+      <!-- Main Content Structure -->
+      <main class="flex flex-col gap-10 md:gap-14 text-left">
+        
+        <!-- Main Hero Intro -->
+        <div class="flex flex-col gap-4">
+          <span class="text-xs font-mono font-bold tracking-[0.2em] text-amber-500 uppercase">Fair and Clear</span>
+          <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
+            Terms of Service
+          </h1>
+          <p class="text-base md:text-lg text-neutral-500 dark:text-neutral-400 font-sans max-w-2xl leading-relaxed">
+            Please review the standard, simple terms for utilizing our free <strong>online pomodoro timer</strong>. We keep our rules honest and free of complicated legal jargon.
+          </p>
+        </div>
+
+        <!-- Detailed Legal Clauses -->
+        <section class="flex flex-col gap-8 text-xs md:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-sans max-w-3xl">
+          <div>
+            <h2 class="text-sm font-bold text-neutral-900 dark:text-white mb-2 uppercase font-mono tracking-wide">1. Acceptance of Conditions</h2>
+            <p>
+              By accessing and utilizing our free browser-based <strong>pomodoro timer app</strong>, you agree to comply with these basic terms of service. If you do not accept these provisions, you should discontinue using our website tools.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-sm font-bold text-neutral-900 dark:text-white mb-2 uppercase font-mono tracking-wide">2. Permitted & Personal Use</h2>
+            <p>
+              Our application is designed and maintained as a personal productivity and cognitive study aid. It is 100% free to access. You may load the timer inside your classrooms, corporate workspaces, and private studies. Scraping, high-frequency automated polling, or embedding our codebase inside paid third-party wrapper apps without explicit consent is strictly prohibited.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-sm font-bold text-neutral-900 dark:text-white mb-2 uppercase font-mono tracking-wide">3. Intellectual Ownership</h2>
+            <p>
+              All visual assets, styling rules, typography layouts, code assets, custom binaural beat engines, sound selector controls, and branding elements belong to Yashraj. Any unauthorized repackaging or commercial redistribution of these assets is restricted.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-sm font-bold text-neutral-900 dark:text-white mb-2 uppercase font-mono tracking-wide">4. Disclaimer & Liability Limitations</h2>
+            <p>
+              This free tool is provided on an "as-is" and "as-available" basis, without warranties of any kind. While we strive to maintain perfect uptime, offline accessibility, and local backup durability, we are not responsible for any direct or indirect productivity disruption or lost session historical data caused by cleared browser cookies or system state resets.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-sm font-bold text-neutral-900 dark:text-white mb-2 uppercase font-mono tracking-wide">5. Revisions and Scope Changes</h2>
+            <p>
+              We reserve the right to refine or adjust our application layouts, sound synthesizers, or configuration structures at any time to improve performance, design aesthetic, or compatibility without prior notice.
+            </p>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Footer navigation links -->
+      <footer class="mt-20 pt-8 border-t border-neutral-200/40 dark:border-neutral-850 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <span class="text-[11px] text-neutral-400 font-mono">© 2026 Pomodoro Timer. Zero cookies, pure focus.</span>
+        <div class="flex gap-4.5 text-[11px] font-mono text-neutral-400">
+          <a href="/about.html" class="hover:text-amber-500 transition-colors">About Us</a>
+          <a href="/contact.html" class="hover:text-amber-500 transition-colors">Contact</a>
+          <a href="/privacy.html" class="hover:text-amber-500 transition-colors">Privacy Policy</a>
+          <a href="/terms.html" class="hover:text-amber-500 transition-colors">Terms</a>
+        </div>
+      </footer>
+
+    </div>
+
+  </body>
+</html>

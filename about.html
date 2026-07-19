@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Metadata -->
+    <title>About Us | Aesthetic Pomodoro Timer App Online</title>
+    <meta name="description" content="Discover the mission behind our cute, free, and minimalist aesthetic pomodoro timer. Designed to align study flow, deep concentration, and cognitive wellness with integrated lofi ambient sounds." />
+    <meta name="keywords" content="about pomodoro, best pomodoro timer, aesthetic pomodoro time, online study clock, minimalist pomodoro, free pomodoro app" />
+    <meta name="author" content="Yashraj" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/src/index.css" />
+
+    <!-- Light/Dark Instant Sync Script -->
+    <script>
+      try {
+        const saved = localStorage.getItem('pomodoro_settings');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    </script>
+  </head>
+  <body class="bg-[#fbf9f4] dark:bg-[#0d0d0d] text-neutral-800 dark:text-neutral-200 min-h-screen transition-colors duration-300 font-sans selection:bg-amber-500/20 antialiased overflow-x-hidden">
+    
+    <!-- Background Accents -->
+    <div class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-rose-400 to-indigo-500 z-50"></div>
+    <div class="fixed top-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-amber-500/5 dark:bg-amber-500/3 blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-indigo-500/5 dark:bg-indigo-500/3 blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-4xl mx-auto px-6 py-12 md:py-20 z-10">
+      
+      <!-- Back To Home Navigation Header -->
+      <header class="flex items-center justify-between mb-12 md:mb-16">
+        <a href="/" class="group flex items-center gap-2.5 px-4.5 py-2.5 rounded-2xl btn-glass-fluid text-xs font-semibold tracking-tight transition-all duration-300 active:scale-95 hover:scale-105">
+          <svg class="w-4 h-4 text-amber-500 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span class="text-neutral-600 dark:text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-white">Back to Timer</span>
+        </a>
+        
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+          <span class="text-[10px] font-mono font-bold tracking-widest text-neutral-400 uppercase">Live Studio</span>
+        </div>
+      </header>
+
+      <!-- Main Content Structure -->
+      <main class="flex flex-col gap-10 md:gap-14 text-left">
+        
+        <!-- Main Hero Intro -->
+        <div class="flex flex-col gap-4">
+          <span class="text-xs font-mono font-bold tracking-[0.2em] text-amber-500 uppercase">Our Story & Goal</span>
+          <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
+            Crafting the ultimate space for deep focus.
+          </h1>
+          <p class="text-base md:text-lg text-neutral-500 dark:text-neutral-400 font-sans max-w-2xl leading-relaxed">
+            Welcome to the home of our free, minimalist, and aesthetic online pomodoro study companion. We build intuitive sensory spaces that blend cognitive neuroscience with gorgeous digital craftsmanship.
+          </p>
+        </div>
+
+        <!-- Bento Grid Block Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6.5 rounded-3xl border border-neutral-200/40 dark:border-neutral-850 bg-white/40 dark:bg-neutral-900/10 backdrop-blur-sm flex flex-col gap-4">
+            <div class="w-9 h-9 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-400 border border-amber-500/25">
+              💡
+            </div>
+            <h2 class="text-lg font-bold text-neutral-900 dark:text-white font-display tracking-tight">Why We Built This Timer</h2>
+            <p class="text-xs md:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+              We were tired of productivity tools cluttered with noisy advertising, forced login panels, paywalled premium features, and intrusive telemetry trackers. Focus shouldn't require registration. We designed this <strong>free pomodoro timer</strong> to provide direct, clean, and instant access to top-tier cognitive focus tools.
+            </p>
+          </div>
+
+          <div class="p-6.5 rounded-3xl border border-neutral-200/40 dark:border-neutral-850 bg-white/40 dark:bg-neutral-900/10 backdrop-blur-sm flex flex-col gap-4">
+            <div class="w-9 h-9 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 border border-indigo-500/25">
+              🔬
+            </div>
+            <h2 class="text-lg font-bold text-neutral-900 dark:text-white font-display tracking-tight">The Science of Sound</h2>
+            <p class="text-xs md:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+              Instead of ordinary ticking clocks, our app features an advanced multi-channel <strong>binaural beats</strong> synthesizer. By playing different sound frequencies in each ear, it guides your brain waves into targeted states: <strong>40Hz Gamma waves</strong> for analytical deep study, or <strong>10Hz Alpha waves</strong> for peaceful reflection.
+            </p>
+          </div>
+        </div>
+
+        <!-- Narrative Section -->
+        <section class="prose prose-neutral dark:prose-invert max-w-none flex flex-col gap-6 text-xs md:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+          <h3 class="text-base font-bold text-neutral-900 dark:text-white uppercase font-mono tracking-wider">Features At A Glance</h3>
+          <p>
+            This <strong>aesthetic pomodoro timer app</strong> features local session stats tracking, beautiful visual progress interfaces, customizable intervals, keyboard shortcuts reference, integrated Spotify embeds, and our highly acclaimed responsive sound mixer. Everything runs 100% locally on your computer for maximum performance and complete privacy.
+          </p>
+          <p>
+            Whether you are using it as an <strong>online pomodoro timer</strong> for study, writing, coding, or organizing tasks inside your Notion workspace, we invite you to settle in, adjust your nature ambient mixes, and enjoy effortless deep cognitive flow.
+          </p>
+        </section>
+
+      </main>
+
+      <!-- Footer navigation links -->
+      <footer class="mt-20 pt-8 border-t border-neutral-200/40 dark:border-neutral-850 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <span class="text-[11px] text-neutral-400 font-mono">© 2026 Pomodoro Timer. Zero cookies, pure focus.</span>
+        <div class="flex gap-4.5 text-[11px] font-mono text-neutral-400">
+          <a href="/about.html" class="hover:text-amber-500 transition-colors">About Us</a>
+          <a href="/contact.html" class="hover:text-amber-500 transition-colors">Contact</a>
+          <a href="/privacy.html" class="hover:text-amber-500 transition-colors">Privacy Policy</a>
+          <a href="/terms.html" class="hover:text-amber-500 transition-colors">Terms</a>
+        </div>
+      </footer>
+
+    </div>
+
+  </body>
+</html>

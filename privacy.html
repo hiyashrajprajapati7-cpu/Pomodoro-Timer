@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Metadata -->
+    <title>Privacy Policy | Free Online Pomodoro Timer</title>
+    <meta name="description" content="Read our simple, transparent privacy policy. We do not track you, collect personal data, or sell information. All stats are stored 100% locally on your browser." />
+    <meta name="keywords" content="pomodoro privacy, private pomodoro timer, free study clock, local storage timer, secure pomodoro" />
+    <meta name="author" content="Yashraj" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/src/index.css" />
+
+    <!-- Light/Dark Instant Sync Script -->
+    <script>
+      try {
+        const saved = localStorage.getItem('pomodoro_settings');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    </script>
+  </head>
+  <body class="bg-[#fbf9f4] dark:bg-[#0d0d0d] text-neutral-800 dark:text-neutral-200 min-h-screen transition-colors duration-300 font-sans selection:bg-amber-500/20 antialiased overflow-x-hidden">
+    
+    <!-- Background Accents -->
+    <div class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-rose-400 to-indigo-500 z-50"></div>
+    <div class="fixed top-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-amber-500/5 dark:bg-amber-500/3 blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-indigo-500/5 dark:bg-indigo-500/3 blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-4xl mx-auto px-6 py-12 md:py-20 z-10">
+      
+      <!-- Back To Home Navigation Header -->
+      <header class="flex items-center justify-between mb-12 md:mb-16">
+        <a href="/" class="group flex items-center gap-2.5 px-4.5 py-2.5 rounded-2xl btn-glass-fluid text-xs font-semibold tracking-tight transition-all duration-300 active:scale-95 hover:scale-105">
+          <svg class="w-4 h-4 text-amber-500 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span class="text-neutral-600 dark:text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-white">Back to Timer</span>
+        </a>
+        
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+          <span class="text-[10px] font-mono font-bold tracking-widest text-neutral-400 uppercase">Privacy Guard</span>
+        </div>
+      </header>
+
+      <!-- Main Content Structure -->
+      <main class="flex flex-col gap-10 md:gap-14 text-left">
+        
+        <!-- Main Hero Intro -->
+        <div class="flex flex-col gap-4">
+          <span class="text-xs font-mono font-bold tracking-[0.2em] text-amber-500 uppercase">Absolute Security</span>
+          <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
+            Your data belongs to you. Zero tracking.
+          </h1>
+          <p class="text-base md:text-lg text-neutral-500 dark:text-neutral-400 font-sans max-w-2xl leading-relaxed">
+            We value your digital privacy. Unlike most other tools, our <strong>pomodoro timer app</strong> does not collect, analyze, transmit, or monetize your activity logs. Settle in with complete peace of mind.
+          </p>
+        </div>
+
+        <!-- Privacy Highlights Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-3xl border border-neutral-200/40 dark:border-neutral-850 bg-white/40 dark:bg-neutral-900/10 backdrop-blur-sm flex flex-col gap-3">
+            <span class="text-xl">🔒</span>
+            <h2 class="text-sm font-bold text-neutral-900 dark:text-white font-mono uppercase tracking-wider">No Accounts</h2>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+              No sign-up, email, password, or third-party login flows are integrated. You stay entirely anonymous.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl border border-neutral-200/40 dark:border-neutral-850 bg-white/40 dark:bg-neutral-900/10 backdrop-blur-sm flex flex-col gap-3">
+            <span class="text-xl">🗄️</span>
+            <h2 class="text-sm font-bold text-neutral-900 dark:text-white font-mono uppercase tracking-wider">Local Storage</h2>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+              Your configurations, task lists, and history streaks are stored 100% locally in your personal browser container (<code class="font-mono text-[10px]">localStorage</code>).
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl border border-neutral-200/40 dark:border-neutral-850 bg-white/40 dark:bg-neutral-900/10 backdrop-blur-sm flex flex-col gap-3">
+            <span class="text-xl">🛡️</span>
+            <h2 class="text-sm font-bold text-neutral-900 dark:text-white font-mono uppercase tracking-wider">Zero Cookies</h2>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+              We do not use tracking pixels, persistent cookie jars, or advertising networks. Your browser cache belongs to you.
+            </p>
+          </div>
+        </div>
+
+        <!-- Detailed Legal Policy -->
+        <section class="flex flex-col gap-8 text-xs md:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-sans max-w-3xl">
+          <div>
+            <h3 class="text-sm font-bold text-neutral-900 dark:text-white mb-2 uppercase font-mono tracking-wide">1. Local Configuration and Persistent Data</h3>
+            <p>
+              When using our <strong>online pomodoro timer</strong>, settings (such as active theme, custom timer durations, and sound selections) and checklists are cached in your local web browser using standard client-side sandbox APIs. These variables remain entirely on your physical machine and can be completely wiped at any time by clearing your browser cache.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-bold text-neutral-900 dark:text-white mb-2 uppercase font-mono tracking-wide">2. Analytics & Infrastructure Logs</h3>
+            <p>
+              We prioritize extreme minimalist hosting. Standard web containers may log basic server-side networking parameters (such as generalized IP routing paths and response statuses) to maintain application runtime availability, but these parameters are not aggregated or coupled with custom user activity patterns.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-bold text-neutral-900 dark:text-white mb-2 uppercase font-mono tracking-wide">3. Third-Party Web Embeds</h3>
+            <p>
+              Our application features optional integrated modules like Spotify ambient tracks. Engaging with these dynamic embeds routes standard connection parameters directly through Spotify's infrastructure, which is governed by their respective privacy terms. If you do not actively load or click these embeds, no data is exchanged.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-bold text-neutral-900 dark:text-white mb-2 uppercase font-mono tracking-wide">4. Contact & User Support</h3>
+            <p>
+              If you actively submit support feedback or feature requests through our contact portal, the information you provide (name, email, subject, message) is processed securely to help address your queries. We never bundle, rent, or sell your correspondence logs.
+            </p>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Footer navigation links -->
+      <footer class="mt-20 pt-8 border-t border-neutral-200/40 dark:border-neutral-850 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <span class="text-[11px] text-neutral-400 font-mono">© 2026 Pomodoro Timer. Zero cookies, pure focus.</span>
+        <div class="flex gap-4.5 text-[11px] font-mono text-neutral-400">
+          <a href="/about.html" class="hover:text-amber-500 transition-colors">About Us</a>
+          <a href="/contact.html" class="hover:text-amber-500 transition-colors">Contact</a>
+          <a href="/privacy.html" class="hover:text-amber-500 transition-colors">Privacy Policy</a>
+          <a href="/terms.html" class="hover:text-amber-500 transition-colors">Terms</a>
+        </div>
+      </footer>
+
+    </div>
+
+  </body>
+</html>
