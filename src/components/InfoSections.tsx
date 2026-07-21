@@ -175,7 +175,7 @@ export function InfoSections({ mode }: InfoSectionsProps) {
     },
     {
       question: 'How to add a Pomodoro Timer to Notion?',
-      answer: 'Adding our cute, aesthetic Pomodoro Timer to Notion is extremely easy. Simply copy our website URL (https://pomodoro-timer.online/ or your custom shared preview link), open your Notion workspace page, paste the link where you want the timer, and select "Create Embed" from the pop-up menu. You can then resize the block to beautifully position the minimalist timer directly next to your database, notes, or planner.'
+      answer: 'Adding our cute, aesthetic Pomodoro Timer to Notion is extremely easy. Simply copy our website URL (https://pomodorotimes.online/ or your custom shared preview link), open your Notion workspace page, paste the link where you want the timer, and select "Create Embed" from the pop-up menu. You can then resize the block to beautifully position the minimalist timer directly next to your database, notes, or planner.'
     },
     {
       question: 'How do you make a Pomodoro Timer?',

@@ -7,6 +7,8 @@
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
+    "pages:dev": "wrangler pages dev ./dist --port 3000",
+    "pages:proxy": "wrangler pages dev --port 3000 -- npm run dev",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
   },
