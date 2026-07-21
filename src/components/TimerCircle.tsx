@@ -79,7 +79,14 @@ export const TimerCircle: React.FC<TimerCircleProps> = ({
   return (
     <div className="flex flex-col items-center justify-center select-none">
       {/* Interactive Timer Block */}
-      <div 
+      <motion.div 
+        animate={{ 
+          scale: timerState === 'running' ? 1.025 : 1,
+          y: timerState === 'running' ? -2 : 0
+        }}
+        whileHover={{ scale: timerState === 'running' ? 1.04 : 1.015 }}
+        whileTap={{ scale: 0.99 }}
+        transition={{ type: 'spring', stiffness: 350, damping: 25 }}
         className={`relative w-64 h-64 min-[380px]:w-72 min-[380px]:h-72 sm:w-85 sm:h-85 flex items-center justify-center rounded-full transition-all duration-500 ${styles.glow} shadow-2xl`}
         id="timer-container-circle"
       >
@@ -149,26 +156,32 @@ export const TimerCircle: React.FC<TimerCircleProps> = ({
             )}
           </button>
         </div>
-      </div>
+      </motion.div>
 
       {/* Primary Action Controls Strip */}
       <div className="flex items-center gap-4 mt-5 sm:mt-10" id="timer-controls">
         {/* Reset Button */}
-        <button
+        <motion.button
           onClick={onReset}
           id="reset-timer-btn"
           title="Reset session (R)"
-          className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-2xl text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 btn-glass-fluid"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
+          transition={{ type: 'spring', stiffness: 450, damping: 28 }}
+          className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-2xl text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 btn-glass-fluid cursor-pointer"
         >
           <RotateCcw className="w-4.5 h-4.5" />
-        </button>
+        </motion.button>
 
         {/* Start / Pause Button */}
-        <button
+        <motion.button
           onClick={onToggleStart}
           id="toggle-timer-btn"
           title={timerState === 'running' ? "Pause (Space)" : "Start (Space)"}
-          className={`flex items-center justify-center w-36 h-11 sm:w-40 sm:h-12 rounded-2xl font-sans text-sm font-semibold shadow-md active:scale-95 hover:scale-103 transition-all duration-200 ${
+          whileHover={{ scale: 1.035 }}
+          whileTap={{ scale: 0.965 }}
+          transition={{ type: 'spring', stiffness: 450, damping: 28 }}
+          className={`flex items-center justify-center w-36 h-11 sm:w-40 sm:h-12 rounded-2xl font-sans text-sm font-semibold shadow-md transition-colors duration-200 cursor-pointer ${
             timerState === 'running'
               ? 'bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-100 border border-neutral-300/50 dark:border-neutral-700/50'
               : mode === 'focus'
@@ -189,7 +202,7 @@ export const TimerCircle: React.FC<TimerCircleProps> = ({
               <span>Start</span>
             </div>
           )}
-        </button>
+        </motion.button>
       </div>
     </div>
   );

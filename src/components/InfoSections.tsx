@@ -30,7 +30,7 @@ interface StepItem {
   duration: string;
 }
 
-export function InfoSections({ mode }: InfoSectionsProps) {
+export const InfoSections = React.memo(function InfoSections({ mode }: InfoSectionsProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Dynamic Theme Styling depending on focus/break mode
@@ -432,4 +432,4 @@ export function InfoSections({ mode }: InfoSectionsProps) {
 
     </div>
   );
-}
+});

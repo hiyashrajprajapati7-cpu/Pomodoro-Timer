@@ -11,7 +11,7 @@ interface FooterBannerProps {
   onShowToast: (message: string, submessage: string, type: 'success' | 'info' | 'alarm') => void;
 }
 
-export function FooterBanner({
+export const FooterBanner = React.memo(function FooterBanner({
   timerState,
   onStartFocusing,
   onSetFocusLength,
@@ -710,5 +710,5 @@ export function FooterBanner({
 
     </div>
   );
-}
+});
 

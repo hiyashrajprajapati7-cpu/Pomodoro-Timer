@@ -131,6 +131,8 @@ export default function App() {
 
   // 2. Refs
   const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const startTimeRef = useRef<number>(0);
+  const initialTimeLeftRef = useRef<number>(0);
   const modeRef = useRef<TimerMode>(mode);
   modeRef.current = mode;
 
@@ -332,17 +334,22 @@ export default function App() {
       setTimerState('running');
       audioEngine.playSubtleClick();
 
+      const startTime = Date.now();
+      const initialTimeLeft = timeLeft;
+      startTimeRef.current = startTime;
+      initialTimeLeftRef.current = initialTimeLeft;
+
       timerIntervalRef.current = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            // Timer Finished!
-            clearInterval(timerIntervalRef.current!);
-            handleTimerComplete();
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
+        const elapsedSeconds = Math.floor((Date.now() - startTimeRef.current) / 1000);
+        const newTimeLeft = Math.max(0, initialTimeLeftRef.current - elapsedSeconds);
+        
+        setTimeLeft(newTimeLeft);
+        
+        if (newTimeLeft <= 0) {
+          clearInterval(timerIntervalRef.current!);
+          handleTimerComplete();
+        }
+      }, 200);
     }
   };
 
@@ -433,17 +440,23 @@ export default function App() {
 
     if (shouldAutoStart) {
       setTimerState('running');
-      // Create fresh interval immediately
+      
+      const startTime = Date.now();
+      const initialTimeLeft = nextDurationSeconds;
+      startTimeRef.current = startTime;
+      initialTimeLeftRef.current = initialTimeLeft;
+
       timerIntervalRef.current = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            clearInterval(timerIntervalRef.current!);
-            handleTimerComplete();
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
+        const elapsedSeconds = Math.floor((Date.now() - startTimeRef.current) / 1000);
+        const newTimeLeft = Math.max(0, initialTimeLeftRef.current - elapsedSeconds);
+        
+        setTimeLeft(newTimeLeft);
+        
+        if (newTimeLeft <= 0) {
+          clearInterval(timerIntervalRef.current!);
+          handleTimerComplete();
+        }
+      }, 200);
     } else {
       setTimerState('idle');
     }

@@ -9,6 +9,79 @@
   --font-display: "Space Grotesk", sans-serif;
 }
 
+/* 1. Global Interactivity & Smoothness Tuning */
+* {
+  -webkit-tap-highlight-color: transparent; /* Disable the ugly blue box highlight on mobile tapping */
+  -webkit-touch-callout: none;
+  scrollbar-width: thin;
+}
+
+/* Optimize font rendering and subpixel anti-aliasing */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-y: none; /* Prevent elastic bouncing loops in web embeds */
+}
+
+/* Eliminate the 300ms mobile touch delay on interactive tags */
+button, 
+a, 
+input, 
+select, 
+textarea {
+  touch-action: manipulation;
+}
+
+/* Apply continuous hardware/GPU acceleration onto key dynamic components */
+.transform-gpu,
+.btn-glass-fluid,
+#timer-container-circle,
+#mode-selector-strip,
+button,
+svg,
+img {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* 2. Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 110, 90, 0.2);
+  border-radius: 999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 110, 90, 0.35);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 3. Hardware Acceleration for countdown circle rings */
+circle.stroke-amber-500,
+circle.stroke-emerald-500,
+circle.stroke-indigo-500 {
+  will-change: stroke-dashoffset;
+}
+
 /* Glass Fluid Button Styles */
 .btn-glass-fluid {
   background-color: rgba(253, 251, 247, 0.45);
@@ -19,7 +92,7 @@
     0 2px 8px -1px rgba(120, 100, 80, 0.03),
     0 1px 3px -1px rgba(120, 100, 80, 0.01),
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.6);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dark .btn-glass-fluid {
@@ -74,4 +147,5 @@ div#root:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-o
 div#root:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(2) > button#theme-toggle-btn:nth-of-type(3):hover > svg:nth-of-type(1) {
   transform: rotate(45deg);
 }
+
 
