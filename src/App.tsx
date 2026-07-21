@@ -150,8 +150,8 @@ export default function App() {
     };
 
     const prefix = timerState === 'running' ? `▶ ${formatTime(timeLeft)}` : formatTime(timeLeft);
-    const label = mode === 'focus' ? 'Focus' : mode === 'shortBreak' ? 'Short Break' : 'Long Break';
-    document.title = `${prefix} | Minimalist ${label}`;
+    const label = mode === 'focus' ? 'Pomodoro Focus' : mode === 'shortBreak' ? 'Short Break' : 'Long Break';
+    document.title = `${prefix} | ${label}`;
   }, [timeLeft, mode, timerState]);
 
   // 4. Load & request browser Notification API capability

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Top button/knob of the timer -->
+  <rect x="36" y="10" width="28" height="10" rx="5" fill="#EAB308" />
+  <!-- Small neck connecting knob to ring -->
+  <rect x="46" y="18" width="8" height="6" fill="#EAB308" />
+  <!-- Main timer circular ring -->
+  <circle cx="50" cy="56" r="30" stroke="#EAB308" stroke-width="8" fill="none" />
+  <!-- Hands/indicator inside -->
+  <line x1="50" y1="56" x2="68" y2="38" stroke="#EAB308" stroke-width="8" stroke-linecap="round" />
+</svg>
