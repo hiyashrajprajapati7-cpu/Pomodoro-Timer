@@ -150,7 +150,7 @@ export default function App() {
     };
 
     const prefix = timerState === 'running' ? `▶ ${formatTime(timeLeft)}` : formatTime(timeLeft);
-    const label = mode === 'focus' ? 'Pomodoro Focus' : mode === 'shortBreak' ? 'Short Break' : 'Long Break';
+    const label = mode === 'focus' ? 'Pomodoro Timer' : mode === 'shortBreak' ? 'Short Break' : 'Long Break';
     document.title = `${prefix} | ${label}`;
   }, [timeLeft, mode, timerState]);
 
