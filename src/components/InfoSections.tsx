@@ -138,64 +138,40 @@ export const InfoSections = React.memo(function InfoSections({ mode }: InfoSecti
 
   const faqs: FAQItem[] = [
     {
+      question: 'Is a Pomodoro Timer good for ADHD and focus management?',
+      answer: 'Yes! An ADHD pomodoro timer is one of the most effective tools for overcoming time blindness and executive dysfunction. By breaking intimidating tasks into clear, visual countdowns (such as 25-minute or 50-minute blocks), individuals with ADHD can initiate tasks faster, prevent overwhelm, and maintain cognitive momentum. Adding relaxing Lofi music or rain sounds further stabilizes focus.'
+    },
+    {
+      question: 'What is a Study With Me Pomodoro Timer with Lofi music?',
+      answer: 'A Study With Me pomodoro timer creates a serene virtual co-studying environment inspired by popular study streams. It pairs structured focus and break intervals with Lofi beats, binaural beats, and ambient soundscapes (like coffee shop, ocean waves, or campfire crackles) to boost motivation during long study marathons.'
+    },
+    {
+      question: 'How do I add this Pomodoro Timer embed widget to Notion?',
+      answer: 'Adding our aesthetic pomodoro timer to Notion is instant. Copy our website URL (https://pomodorotimes.online/), open your Notion study hub or daily planner page, paste the URL where you want the timer, and click "Create Embed". You can then resize the widget seamlessly alongside your notes.'
+    },
+    {
+      question: 'Is Pomodoro 50/10 or 25/5 better for deep work?',
+      answer: 'Neither schedule is universally better—it depends on your workflow. The classic 25/5 schedule (25 minutes focus, 5 minutes rest) is ideal for tackling quick assignments or overcoming procrastination. The 50/10 deep work schedule (50 minutes focus, 10 minutes rest) is preferred for complex cognitive tasks like programming, writing, or designing where reaching a flow state takes longer.'
+    },
+    {
       question: 'What is a Pomodoro Timer?',
       answer: 'A Pomodoro Timer is a minimalist time-management tool designed to structure your work or study sessions into highly focused intervals (traditionally 25 minutes long) called "Pomodoros." These periods of intense cognitive activity are separated by short restorative breaks, allowing the brain to consolidate learning, restore executive function, and prevent mental exhaustion.'
     },
     {
-      question: 'Is Pomodoro 50/10 or 25/5 better?',
-      answer: 'Neither method is universally superior; it depends entirely on your task complexity and personal focus limits. The classic 25/5 schedule (25 minutes of focus, 5 minutes of rest) is perfect for overcoming procrastination, quick drills, or repetitive studies. The 50/10 schedule is ideal for deeper, complex cognitive tasks like writing, designing, or programming, where getting into a state of "flow" requires a longer uninterrupted window of time.'
-    },
-    {
-      question: 'What is the Pomodoro 90 20 rule?',
-      answer: 'The Pomodoro 90/20 rule, also known as the Ultradian Rhythm technique, involves working with undivided attention for 90 minutes followed by a deep restorative 20-minute break. This cycle aligns with the human body\'s natural ultradian rhythm waves of cognitive energy. Practicing 90/20 blocks is fantastic for heavy focus sessions and prevents long-term executive fatigue.'
-    },
-    {
-      question: 'Does Elon Musk use Pomodoro?',
-      answer: 'No, Elon Musk does not use the standard Pomodoro Technique. Instead, he famously uses a system called "Time Blocking" or "Time Boxing," where he schedules his entire day in high-intensity, pre-defined 5-minute segments. Although the scale is tighter, both methods share the identical core philosophy: eliminating multitasking by committing 100% of your attention to a single dedicated block.'
+      question: 'What is the Pomodoro 90 20 rule & Time Blocking?',
+      answer: 'The Pomodoro 90/20 rule, based on Ultradian Rhythms, involves working with undivided attention for 90 minutes followed by a deep restorative 20-minute break. Combined with Elon Musk\'s Time Blocking method, it ensures high-intensity execution without mental fatigue.'
     },
     {
       question: 'How many pomodoros is 1 hour?',
-      answer: 'In exactly 1 hour (60 minutes), you can complete 2 standard Pomodoro rounds. Each complete round consists of a 25-minute focused work session followed by a 5-minute short restorative break, which sums to 30 minutes. Completing two cycles back-to-back perfectly fills a 60-minute window.'
-    },
-    {
-      question: 'Is Pomodoro 20 minutes or 25 minutes?',
-      answer: 'The official, classic Pomodoro session is exactly 25 minutes long, designed by Francesco Cirillo. However, modern productivity apps allow you to tailor the duration to your workflow—such as 20-minute cycles for lightweight tasks, or 50-minute blocks for deep work. The essential rule is to maintain a strict, structured boundary between active attention and complete rest.'
-    },
-    {
-      question: 'Why is it called a Pomodoro Timer?',
-      answer: 'The system is named after the tomato-shaped kitchen timer ("pomodoro" means tomato in Italian) that its inventor, Francesco Cirillo, used during his university studies to track his focused blocks. The tomato represents any dedicated interval of uninterrupted attention.'
-    },
-    {
-      question: 'How does a Pomodoro Timer work?',
-      answer: 'A Pomodoro Timer works by leveraging structured timing blocks and neural intervals to optimize focus: 1) Choose one single task on your checklist. 2) Start the 25-minute study timer. 3) Work with singular commitment until the bell rings. 4) Take a 5-minute break to detach from screens. 5) Repeat this cycle 4 times, then reward yourself with a long 15–30 minute break.'
-    },
-    {
-      question: 'How to use Pomodoro Timer apps effectively?',
-      answer: 'To use Pomodoro Timer apps effectively, start by removing digital friction—turn off notifications, put your phone away, and close unrelated tabs. Next, activate ambient background noises or science-backed binaural alpha waves to block background distractions. Finally, respect your breaks; do not scroll social media or read work emails during your 5-minute rests. Instead, stretch, walk, or drink water to let your brain\'s default mode network recharge.'
-    },
-    {
-      question: 'How to add a Pomodoro Timer to Notion?',
-      answer: 'Adding our cute, aesthetic Pomodoro Timer to Notion is extremely easy. Simply copy our website URL (https://pomodorotimes.online/ or your custom shared preview link), open your Notion workspace page, paste the link where you want the timer, and select "Create Embed" from the pop-up menu. You can then resize the block to beautifully position the minimalist timer directly next to your database, notes, or planner.'
-    },
-    {
-      question: 'How do you make a Pomodoro Timer?',
-      answer: 'A custom Pomodoro Timer is made using modern web standards like React, TypeScript, and Tailwind CSS. The core engine uses a stateful countdown countdown loop (via setInterval), wrapped in an aesthetic visual interface with custom ambient audio channels and local storage persistence. This application is an example of an advanced, modern study timer built using responsive, high-performance web engineering.'
+      answer: 'In exactly 1 hour (60 minutes), you can complete 2 standard Pomodoro rounds consisting of 25 minutes of active work and 5 minutes of rest per cycle.'
     },
     {
       question: 'How do Focus Soundscapes and Binaural Beats enhance deep work?',
       answer: 'Focus sounds act as auditory shielding, masking sudden background noise that would otherwise trigger startle responses in your brain. Binaural beats send slightly different frequencies to each ear (e.g., 160Hz and 200Hz), encouraging the neural pathways to synchronize into a 40Hz Gamma state (associated with high memory retention and focus) or a 10Hz Alpha state (associated with relaxed alert flow).'
     },
     {
-      question: 'Can I customize the timer lengths for my own workflow?',
-      answer: 'Absolutely! Click the settings gear in the top right to adjust your Focus session length (e.g. 50 minutes for longer flow states), Short Break durations (e.g. 10 minutes), Long Break intervals, and even your overall daily session target.'
-    },
-    {
-      question: 'Are there keyboard shortcuts to handle the app quickly?',
-      answer: 'Yes, this app supports professional keyboard navigation. Press Space to instantly Play/Pause the countdown, R to Reset the clock, and F to jump into or out of the immersive focus view.'
-    },
-    {
-      question: 'Does the website track my work or collect telemetry?',
-      answer: 'No. This app is designed with a strict offline-first, local-only architecture. Your progress and customized configurations reside entirely on your device inside secure client storage, ensuring total privacy.'
+      question: 'Can I customize timer lengths for ADHD and custom workflows?',
+      answer: 'Absolutely! Click the settings gear in the top right to adjust your Focus session length (e.g., 25 or 50 minutes), Short Break durations (e.g. 5 or 10 minutes), Long Break intervals, and daily target metrics.'
     },
     {
       question: 'Is it free to use for daily studying and productivity?',
