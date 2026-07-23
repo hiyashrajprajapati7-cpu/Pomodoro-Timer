@@ -138,44 +138,60 @@ export const InfoSections = React.memo(function InfoSections({ mode }: InfoSecti
 
   const faqs: FAQItem[] = [
     {
+      question: 'What is the Pomodoro Technique?',
+      answer: 'The Pomodoro Technique is a time-management method created by Francesco Cirillo in the late 1980s. You work in focused 25-minute intervals called pomodoros, each followed by a 5-minute break, with a longer break after every four rounds. The short, fixed sessions make starting easier and keep concentration fresh. This timer runs the whole cycle for you — focus, short breaks and the long break — and counts every pomodoro you complete.'
+    },
+    {
+      question: 'How do I use the Pomodoro Technique?',
+      answer: 'Choose a single task you want to work on, set the timer for 25 minutes, and work with complete focus until the chime rings. When the session ends, take a 5-minute short break to stretch or rest your eyes. After completing four pomodoro focus sessions, reward yourself with a longer 15–30 minute break to recharge.'
+    },
+    {
+      question: 'What should I do during the breaks?',
+      answer: 'Use short breaks to step away from your screen, stretch, drink water, take deep breaths, or rest your eyes. Avoid opening social media, checking emails, or engaging in intense mental work so your brain can reset and consolidate focus for the next session.'
+    },
+    {
+      question: 'Can I install it on Windows, Mac, Android or iPhone?',
+      answer: 'Yes! Our Pomodoro Timer is a responsive web application. You can easily bookmark or use "Add to Home Screen" on iOS, Android, Windows, and Mac for a seamless app-like desktop or mobile experience without downloading heavy software.'
+    },
+    {
+      question: 'Is it free? Can I get more features?',
+      answer: 'Yes, Pomodoro Times is 100% free with all features fully unlocked—including multi-channel ambient sound mixing, binaural beats, customizable timer intervals, Spotify player integration, task list management, and Notion embeds. No subscription, account creation, or hidden paywalls required.'
+    },
+    {
+      question: 'Can I use my own image as the timer background?',
+      answer: 'Our app features clean, aesthetic background themes, ambient visual modes, and dark mode options carefully designed for high legibility and minimal cognitive distraction during study sessions.'
+    },
+    {
+      question: 'Does it track how much time I spend on each task?',
+      answer: 'Yes! You can create tasks in our built-in Task Manager list, assign target pomodoro counts, and track completed focus sessions for each specific task as you work.'
+    },
+    {
+      question: 'Will the timer keep running if I switch tabs or close the browser?',
+      answer: 'Yes! The timer continues running smoothly in the background when you switch tabs or switch apps. Chime alerts and browser tab title updates keep you informed when focus or break sessions finish.'
+    },
+    {
+      question: 'Can I keep the timer visible on top of other windows?',
+      answer: 'You can easily embed our aesthetic timer directly into workspace apps like Notion, keeping it visible alongside your study notes, planners, or task databases while working.'
+    },
+    {
+      question: 'Do I need an account? Where is my data stored?',
+      answer: 'No account or registration is required! All your custom timer settings, task lists, and focus session statistics are stored securely and privately in your browser\'s local storage (localStorage). Your data stays 100% on your device.'
+    },
+    {
       question: 'Is a Pomodoro Timer good for ADHD and focus management?',
-      answer: 'Yes! An ADHD pomodoro timer is one of the most effective tools for overcoming time blindness and executive dysfunction. By breaking intimidating tasks into clear, visual countdowns (such as 25-minute or 50-minute blocks), individuals with ADHD can initiate tasks faster, prevent overwhelm, and maintain cognitive momentum. Adding relaxing Lofi music or rain sounds further stabilizes focus.'
+      answer: 'Yes! An ADHD pomodoro timer is one of the most effective tools for overcoming time blindness and executive dysfunction. By breaking intimidating tasks into clear, visual countdowns (such as 25-minute or 50-minute blocks), individuals with ADHD can initiate tasks faster, prevent overwhelm, and maintain cognitive momentum.'
     },
     {
       question: 'What is a Study With Me Pomodoro Timer with Lofi music?',
-      answer: 'A Study With Me pomodoro timer creates a serene virtual co-studying environment inspired by popular study streams. It pairs structured focus and break intervals with Lofi beats, binaural beats, and ambient soundscapes (like coffee shop, ocean waves, or campfire crackles) to boost motivation during long study marathons.'
+      answer: 'A Study With Me pomodoro timer creates a serene virtual co-studying environment inspired by popular study streams. It pairs structured focus and break intervals with Lofi beats, binaural beats, and ambient soundscapes to boost motivation during study sessions.'
     },
     {
       question: 'How do I add this Pomodoro Timer embed widget to Notion?',
-      answer: 'Adding our aesthetic pomodoro timer to Notion is instant. Copy our website URL (https://pomodorotimes.online/), open your Notion study hub or daily planner page, paste the URL where you want the timer, and click "Create Embed". You can then resize the widget seamlessly alongside your notes.'
+      answer: 'Adding our aesthetic pomodoro timer to Notion is instant. Copy our website URL (https://pomodorotimes.online/), open your Notion study hub or daily planner page, paste the URL where you want the timer, and click "Create Embed".'
     },
     {
       question: 'Is Pomodoro 50/10 or 25/5 better for deep work?',
-      answer: 'Neither schedule is universally better—it depends on your workflow. The classic 25/5 schedule (25 minutes focus, 5 minutes rest) is ideal for tackling quick assignments or overcoming procrastination. The 50/10 deep work schedule (50 minutes focus, 10 minutes rest) is preferred for complex cognitive tasks like programming, writing, or designing where reaching a flow state takes longer.'
-    },
-    {
-      question: 'What is a Pomodoro Timer?',
-      answer: 'A Pomodoro Timer is a minimalist time-management tool designed to structure your work or study sessions into highly focused intervals (traditionally 25 minutes long) called "Pomodoros." These periods of intense cognitive activity are separated by short restorative breaks, allowing the brain to consolidate learning, restore executive function, and prevent mental exhaustion.'
-    },
-    {
-      question: 'What is the Pomodoro 90 20 rule & Time Blocking?',
-      answer: 'The Pomodoro 90/20 rule, based on Ultradian Rhythms, involves working with undivided attention for 90 minutes followed by a deep restorative 20-minute break. Combined with Elon Musk\'s Time Blocking method, it ensures high-intensity execution without mental fatigue.'
-    },
-    {
-      question: 'How many pomodoros is 1 hour?',
-      answer: 'In exactly 1 hour (60 minutes), you can complete 2 standard Pomodoro rounds consisting of 25 minutes of active work and 5 minutes of rest per cycle.'
-    },
-    {
-      question: 'How do Focus Soundscapes and Binaural Beats enhance deep work?',
-      answer: 'Focus sounds act as auditory shielding, masking sudden background noise that would otherwise trigger startle responses in your brain. Binaural beats send slightly different frequencies to each ear (e.g., 160Hz and 200Hz), encouraging the neural pathways to synchronize into a 40Hz Gamma state (associated with high memory retention and focus) or a 10Hz Alpha state (associated with relaxed alert flow).'
-    },
-    {
-      question: 'Can I customize timer lengths for ADHD and custom workflows?',
-      answer: 'Absolutely! Click the settings gear in the top right to adjust your Focus session length (e.g., 25 or 50 minutes), Short Break durations (e.g. 5 or 10 minutes), Long Break intervals, and daily target metrics.'
-    },
-    {
-      question: 'Is it free to use for daily studying and productivity?',
-      answer: 'Yes, this tool is 100% open, fully unlocked, and clean. There are no paywalls, premium-locked sounds, limits on daily focus sessions, or flashing display ads.'
+      answer: 'Neither schedule is universally better—it depends on your workflow. The classic 25/5 schedule (25 minutes focus, 5 minutes rest) is ideal for tackling quick assignments or overcoming procrastination. The 50/10 deep work schedule (50 minutes focus, 10 minutes rest) is preferred for complex cognitive tasks like programming or writing.'
     }
   ];
 
