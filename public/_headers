@@ -1,2 +1,4 @@
-https://pomodoro-timer-a2d.pages.dev/*
-  X-Robots-Tag: noindex
+# Cloudflare Pages Headers
+/*
+  X-Content-Type-Options: nosniff
+
