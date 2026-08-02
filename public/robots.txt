@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pomodorotimes.online/sitemap.xml
+Sitemap: https://pomodorotimes.info/sitemap.xml

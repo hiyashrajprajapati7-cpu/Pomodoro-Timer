@@ -187,7 +187,7 @@ export const InfoSections = React.memo(function InfoSections({ mode }: InfoSecti
     },
     {
       question: 'How do I add this Pomodoro Timer embed widget to Notion?',
-      answer: 'Adding our aesthetic pomodoro timer to Notion is instant. Copy our website URL (https://pomodorotimes.online/), open your Notion study hub or daily planner page, paste the URL where you want the timer, and click "Create Embed".'
+      answer: 'Adding our aesthetic pomodoro timer to Notion is instant. Copy our website URL (https://pomodorotimes.info/), open your Notion study hub or daily planner page, paste the URL where you want the timer, and click "Create Embed".'
     },
     {
       question: 'Is Pomodoro 50/10 or 25/5 better for deep work?',

@@ -1,0 +1,16 @@
+{
+  "name": "Pomodoro Times | Aesthetic Pomodoro Timer",
+  "short_name": "PomodoroTimes",
+  "description": "Free aesthetic online pomodoro timer & ADHD study timer. Features 25/5 and 50/10 deep work intervals, Notion widget embed, Lofi Spotify music, ambient sound mixer, and binaural beats.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf9f4",
+  "theme_color": "#f59e0b",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
