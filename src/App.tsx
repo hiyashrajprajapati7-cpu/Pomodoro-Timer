@@ -601,15 +601,15 @@ export default function App() {
                   <line x1="50" y1="56" x2="68" y2="38" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
                 </svg>
               </span>
-              <span className={`hidden min-[420px]:inline text-sm font-bold tracking-tight font-sans transition-all duration-500 ${
+              <h1 className={`text-xs sm:text-sm font-bold tracking-tight font-sans transition-all duration-500 ${
                 mode === 'focus'
                   ? 'text-amber-600 dark:text-amber-400 drop-shadow-[0_0_6px_rgba(245,158,11,0.45)]'
                   : mode === 'shortBreak'
                   ? 'text-emerald-600 dark:text-emerald-400 drop-shadow-[0_0_6px_rgba(16,185,129,0.45)]'
                   : 'text-indigo-600 dark:text-indigo-400 drop-shadow-[0_0_6px_rgba(99,102,241,0.45)]'
               }`}>
-                Pomodoro Timer
-              </span>
+                Pomodoro Times
+              </h1>
             </div>
 
             {/* Utility Controls Row */}
