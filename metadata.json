@@ -1,6 +1,6 @@
 {
-  "name": "Pomodoro Timer",
-  "description": "A beautiful, minimalist Pomodoro timer designed specifically for students.",
+  "name": "Pomodoro Times",
+  "description": "Free aesthetic online pomodoro timer & ADHD study app on pomodorotimes.info.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
