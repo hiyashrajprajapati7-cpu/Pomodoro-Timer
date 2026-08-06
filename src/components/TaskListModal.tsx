@@ -65,7 +65,7 @@ export const TaskListModal: React.FC<TaskListModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: 10 }}
             transition={{ type: 'spring', damping: 26, stiffness: 360 }}
-            className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[92vw] max-w-[460px] max-h-[80vh] overflow-hidden rounded-2xl border bg-[#FCFAF2]/95 dark:bg-neutral-900/95 backdrop-blur-xl transition-all duration-300 flex flex-col ${
+            className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[94vw] sm:w-[92vw] max-w-[460px] max-h-[90dvh] sm:max-h-[85vh] my-auto overflow-hidden rounded-2xl border bg-[#FCFAF2]/95 dark:bg-neutral-900/95 backdrop-blur-xl transition-all duration-300 flex flex-col ${
               mode === 'focus'
                 ? 'shadow-[0_20px_50px_rgba(245,158,11,0.1)] border-amber-500/20 dark:border-amber-500/10'
                 : mode === 'shortBreak'
@@ -74,7 +74,7 @@ export const TaskListModal: React.FC<TaskListModalProps> = ({
             }`}
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-amber-200/10 dark:border-neutral-800/60 px-6 py-4">
+            <div className="flex items-center justify-between border-b border-amber-200/10 dark:border-neutral-800/60 px-4 sm:px-6 py-3.5 sm:py-4 shrink-0">
               <div className="flex items-center gap-2">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-sans">
                   Focus Goals
@@ -86,7 +86,7 @@ export const TaskListModal: React.FC<TaskListModalProps> = ({
               <button
                 id="close-tasks-btn"
                 onClick={onClose}
-                className="text-xs font-semibold px-2.5 py-1 text-neutral-450 hover:text-neutral-700 dark:text-neutral-550 dark:hover:text-neutral-300 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
+                className="text-xs font-semibold px-2.5 py-1 text-neutral-450 hover:text-neutral-700 dark:text-neutral-550 dark:hover:text-neutral-300 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -95,12 +95,12 @@ export const TaskListModal: React.FC<TaskListModalProps> = ({
             {/* Content Area */}
             <div className="flex-1 flex flex-col overflow-hidden">
               {/* Info Tips Bar */}
-              <div className="px-6 py-2.5 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] border-b border-amber-200/5 dark:border-neutral-800/30 flex items-center gap-2 text-[11px] text-neutral-500 dark:text-neutral-400 font-sans">
+              <div className="px-4 sm:px-6 py-2 bg-amber-500/[0.03] dark:bg-amber-400/[0.02] border-b border-amber-200/5 dark:border-neutral-800/30 flex items-center gap-2 text-[11px] text-neutral-500 dark:text-neutral-400 font-sans shrink-0">
                 <span>Set your daily goals. Use the Focus button to display a task on your active timer screen.</span>
               </div>
 
               {/* Task Form */}
-              <form onSubmit={handleSubmit} className="px-6 py-4 border-b border-neutral-100 dark:border-neutral-800/40">
+              <form onSubmit={handleSubmit} className="px-4 sm:px-6 py-3 sm:py-4 border-b border-neutral-100 dark:border-neutral-800/40 shrink-0">
                 <div className="flex gap-2">
                   <input
                     type="text"
@@ -109,7 +109,7 @@ export const TaskListModal: React.FC<TaskListModalProps> = ({
                     onChange={(e) => setNewTaskText(e.target.value)}
                     placeholder="Focus target description..."
                     maxLength={100}
-                    className={`flex-1 px-4 py-2 rounded-xl border border-neutral-250 dark:border-neutral-800 bg-white/60 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 text-xs focus:outline-none focus:ring-1 transition-all placeholder:text-neutral-400 dark:placeholder:text-neutral-600 ${
+                    className={`flex-1 min-w-0 px-3 sm:px-4 py-2 rounded-xl border border-neutral-250 dark:border-neutral-800 bg-white/60 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 text-xs focus:outline-none focus:ring-1 transition-all placeholder:text-neutral-400 dark:placeholder:text-neutral-600 ${
                       mode === 'focus'
                         ? 'focus:ring-amber-500 focus:border-amber-500/40'
                         : mode === 'shortBreak'
@@ -119,7 +119,7 @@ export const TaskListModal: React.FC<TaskListModalProps> = ({
                   />
                   <button
                     type="submit"
-                    className={`px-4.5 py-2 rounded-xl flex items-center justify-center font-bold text-xs text-white shadow-sm hover:scale-[1.01] active:scale-97 transition-all duration-200 cursor-pointer ${
+                    className={`px-4 sm:px-4.5 py-2 rounded-xl flex items-center justify-center font-bold text-xs text-white shadow-sm hover:scale-[1.01] active:scale-97 transition-all duration-200 shrink-0 cursor-pointer ${
                       mode === 'focus'
                         ? 'bg-amber-500 hover:bg-amber-600 shadow-amber-500/10'
                         : mode === 'shortBreak'
@@ -133,7 +133,7 @@ export const TaskListModal: React.FC<TaskListModalProps> = ({
               </form>
 
               {/* Tasks list */}
-              <div className="flex-1 overflow-y-auto px-6 py-3 space-y-2 max-h-[35vh]">
+              <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-3 space-y-2">
                 {tasks.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-10 text-center text-neutral-450 dark:text-neutral-500 gap-1.5">
                     <p className="text-xs font-sans">No tasks yet. Create one above to guide your session.</p>

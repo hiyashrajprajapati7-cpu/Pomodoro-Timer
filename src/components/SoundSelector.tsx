@@ -187,10 +187,10 @@ export const SoundSelector: React.FC<SoundSelectorProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.98 }}
             transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-            className="fixed bottom-0 left-0 right-0 z-50 max-h-[85vh] sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[480px] overflow-hidden rounded-t-2xl sm:rounded-2xl border border-amber-200/30 dark:border-neutral-800/50 bg-[#FCFAF2]/95 dark:bg-neutral-900/95 backdrop-blur-xl shadow-2xl transition-colors duration-300 flex flex-col"
+            className="fixed bottom-0 left-0 right-0 z-50 max-h-[88dvh] sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[480px] sm:max-h-[85vh] my-auto overflow-hidden rounded-t-2xl sm:rounded-2xl border border-amber-200/30 dark:border-neutral-800/50 bg-[#FCFAF2]/95 dark:bg-neutral-900/95 backdrop-blur-xl shadow-2xl transition-colors duration-300 flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-amber-200/20 dark:border-neutral-800/80 px-6 py-4 shrink-0">
+            <div className="flex items-center justify-between border-b border-amber-200/20 dark:border-neutral-800/80 px-4 sm:px-6 py-3.5 sm:py-4 shrink-0">
               <div className="flex items-center gap-2">
                 <Music className="w-5 h-5 text-neutral-800 dark:text-neutral-200" />
                 <h3 className="text-base font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
@@ -202,7 +202,7 @@ export const SoundSelector: React.FC<SoundSelectorProps> = ({
                   </span>
                 )}
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 {activeTab === 'ambient' && activeCount > 0 && (
                   <button
                     onClick={stopAllSounds}
@@ -222,7 +222,7 @@ export const SoundSelector: React.FC<SoundSelectorProps> = ({
             </div>
 
             {/* Custom Tab Switcher */}
-            <div className="flex px-6 border-b border-amber-200/10 dark:border-neutral-800/40 bg-neutral-50/20 dark:bg-neutral-950/10 shrink-0">
+            <div className="flex px-4 sm:px-6 border-b border-amber-200/10 dark:border-neutral-800/40 bg-neutral-50/20 dark:bg-neutral-950/10 shrink-0">
               <button
                 type="button"
                 onClick={() => {
@@ -239,7 +239,7 @@ export const SoundSelector: React.FC<SoundSelectorProps> = ({
                 {activeTab === 'ambient' && (
                   <motion.div
                     layoutId="activeSoundTab"
-                    className={`absolute bottom-0 left-6 right-6 h-0.5 ${
+                    className={`absolute bottom-0 left-4 sm:left-6 right-4 sm:right-6 h-0.5 ${
                       mode === 'focus' ? 'bg-amber-500' : mode === 'shortBreak' ? 'bg-emerald-500' : 'bg-indigo-500'
                     }`}
                     transition={{ type: 'spring', damping: 20, stiffness: 300 }}
@@ -267,7 +267,7 @@ export const SoundSelector: React.FC<SoundSelectorProps> = ({
                 {activeTab === 'spotify' && (
                   <motion.div
                     layoutId="activeSoundTab"
-                    className={`absolute bottom-0 left-6 right-6 h-0.5 ${
+                    className={`absolute bottom-0 left-4 sm:left-6 right-4 sm:right-6 h-0.5 ${
                       mode === 'focus' ? 'bg-amber-500' : mode === 'shortBreak' ? 'bg-emerald-500' : 'bg-indigo-500'
                     }`}
                     transition={{ type: 'spring', damping: 20, stiffness: 300 }}
@@ -277,7 +277,7 @@ export const SoundSelector: React.FC<SoundSelectorProps> = ({
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 overflow-y-auto px-6 py-4 max-h-[50vh] sm:max-h-[55vh]">
+            <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-3 sm:py-4">
               {activeTab === 'ambient' ? (
                 <div className="space-y-6">
                   {categories.map(cat => {

@@ -92,7 +92,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 15 }}
             transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-            className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[92vw] max-w-[500px] max-h-[85vh] overflow-hidden rounded-2xl border bg-[#FCFAF2]/95 dark:bg-neutral-900/95 backdrop-blur-xl transition-all duration-300 flex flex-col ${
+            className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[94vw] sm:w-[92vw] max-w-[500px] max-h-[90dvh] sm:max-h-[85vh] my-auto overflow-hidden rounded-2xl border bg-[#FCFAF2]/95 dark:bg-neutral-900/95 backdrop-blur-xl transition-all duration-300 flex flex-col ${
               mode === 'focus'
                 ? 'shadow-[0_20px_50px_rgba(245,158,11,0.12)] border-amber-500/25 dark:border-amber-500/15'
                 : mode === 'shortBreak'
@@ -101,7 +101,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             }`}
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-amber-200/20 dark:border-neutral-800/80 px-6 py-4.5">
+            <div className="flex items-center justify-between border-b border-amber-200/20 dark:border-neutral-800/80 px-4 sm:px-6 py-3.5 sm:py-4.5 shrink-0">
               <div className="flex items-center gap-2">
                 <Settings className={`w-5 h-5 transition-colors duration-300 ${
                   mode === 'focus'
@@ -117,20 +117,20 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <button
                 id="close-settings-btn"
                 onClick={onClose}
-                className="rounded-full p-1.5 text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300 btn-glass-fluid"
+                className="rounded-full p-1.5 text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300 btn-glass-fluid cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* Scrollable Content */}
-            <div className="overflow-y-auto px-6 py-5 flex-1 space-y-6 max-h-[60vh]">
+            <div className="overflow-y-auto px-4 sm:px-6 py-4 sm:py-5 flex-1 space-y-5 sm:space-y-6">
               {/* Durations */}
               <div className="space-y-3">
                 <h4 className="text-xs font-mono font-medium tracking-wider text-neutral-400 dark:text-neutral-500 uppercase">
                   Custom Durations (Minutes)
                 </h4>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 min-[380px]:grid-cols-3 gap-2.5 sm:gap-3">
                   {/* Focus */}
                   <div className="flex flex-col gap-1">
                     <label className="text-[11px] font-medium text-neutral-500 dark:text-neutral-450">
@@ -203,8 +203,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 </h4>
 
                 {/* Auto Start Breaks Toggle */}
-                <div className="flex items-center justify-between">
-                  <div className="flex flex-col gap-0.5">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                     <label className="text-sm font-medium text-neutral-800 dark:text-neutral-200">
                       Auto Start Breaks
                     </label>
@@ -236,8 +236,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 </div>
 
                 {/* Auto Start Focus Toggle */}
-                <div className="flex items-center justify-between">
-                  <div className="flex flex-col gap-0.5">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                     <label className="text-sm font-medium text-neutral-800 dark:text-neutral-200">
                       Auto Start Focus
                     </label>
@@ -269,8 +269,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 </div>
 
                 {/* Target Sessions */}
-                <div className="flex items-center justify-between pt-2">
-                  <div className="flex flex-col gap-0.5">
+                <div className="flex items-center justify-between gap-3 pt-2">
+                  <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                     <label className="text-sm font-medium text-neutral-800 dark:text-neutral-200">
                       Daily Target Sessions
                     </label>
@@ -284,7 +284,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     max="24"
                     value={target}
                     onChange={(e) => setTarget(parseInt(e.target.value) || 1)}
-                    className={`w-16 px-2 py-1.5 rounded-lg border border-neutral-300 dark:border-neutral-850 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 text-sm font-semibold font-mono focus:outline-none focus:ring-1 text-center transition-all ${
+                    className={`w-16 shrink-0 px-2 py-1.5 rounded-lg border border-neutral-300 dark:border-neutral-850 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 text-sm font-semibold font-mono focus:outline-none focus:ring-1 text-center transition-all ${
                       mode === 'focus'
                         ? 'focus:ring-amber-500 focus:border-amber-500/40'
                         : mode === 'shortBreak'
@@ -305,27 +305,27 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 </div>
 
                 <div className="grid gap-2 text-xs font-mono">
-                  <div className="flex items-center justify-between p-2.5 rounded-lg bg-neutral-50/50 dark:bg-neutral-950/15 border border-neutral-100 dark:border-neutral-850">
-                    <span className="text-neutral-500 dark:text-neutral-400 font-sans">Start or Pause timer</span>
-                    <kbd className="px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[10px] font-mono shadow-sm">
+                  <div className="flex items-center justify-between gap-2 p-2 sm:p-2.5 rounded-lg bg-neutral-50/50 dark:bg-neutral-950/15 border border-neutral-100 dark:border-neutral-850">
+                    <span className="text-neutral-500 dark:text-neutral-400 font-sans text-xs">Start or Pause timer</span>
+                    <kbd className="px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[10px] font-mono shadow-sm shrink-0">
                       SPACE
                     </kbd>
                   </div>
 
-                  <div className="flex items-center justify-between p-2.5 rounded-lg bg-neutral-50/50 dark:bg-neutral-950/15 border border-neutral-100 dark:border-neutral-850">
-                    <span className="text-neutral-500 dark:text-neutral-400 font-sans">Reset current timer</span>
-                    <kbd className="px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[10px] font-mono shadow-sm">
+                  <div className="flex items-center justify-between gap-2 p-2 sm:p-2.5 rounded-lg bg-neutral-50/50 dark:bg-neutral-950/15 border border-neutral-100 dark:border-neutral-850">
+                    <span className="text-neutral-500 dark:text-neutral-400 font-sans text-xs">Reset current timer</span>
+                    <kbd className="px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[10px] font-mono shadow-sm shrink-0">
                       R
                     </kbd>
                   </div>
 
-                  <div className="flex items-center justify-between p-2.5 rounded-lg bg-neutral-50/50 dark:bg-neutral-950/15 border border-neutral-100 dark:border-neutral-850">
-                    <span className="text-neutral-500 dark:text-neutral-400 font-sans">Toggle Full Screen Mode</span>
-                    <div className="flex gap-1.5">
+                  <div className="flex items-center justify-between gap-2 p-2 sm:p-2.5 rounded-lg bg-neutral-50/50 dark:bg-neutral-950/15 border border-neutral-100 dark:border-neutral-850">
+                    <span className="text-neutral-500 dark:text-neutral-400 font-sans text-xs">Toggle Full Screen Mode</span>
+                    <div className="flex flex-wrap items-center justify-end gap-1 sm:gap-1.5 shrink-0">
                       <kbd className="px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[10px] font-mono shadow-sm">
                         CTRL + F
                       </kbd>
-                      <span className="text-neutral-405 font-sans">or</span>
+                      <span className="text-neutral-405 font-sans text-[10px]">or</span>
                       <kbd className="px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[10px] font-mono shadow-sm">
                         F
                       </kbd>
@@ -335,8 +335,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               </div>
 
               {/* Danger Zone */}
-              <div className="pt-4 border-t border-amber-200/20 dark:border-neutral-800/60 flex items-center justify-between">
-                <div className="flex flex-col gap-0.5">
+              <div className="pt-4 border-t border-amber-200/20 dark:border-neutral-800/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="flex flex-col gap-0.5 min-w-0">
                   <span className="text-xs font-semibold text-rose-500 dark:text-rose-400">Clear Data</span>
                   <p className="text-[10px] text-neutral-400 dark:text-neutral-500 font-sans leading-tight">
                     Reset completed focus sessions and history back to zero.
@@ -344,7 +344,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 </div>
                 <button
                   onClick={handleClear}
-                  className="flex items-center gap-1.5 text-xs font-medium text-rose-500 hover:text-rose-600 bg-rose-500/10 dark:bg-rose-500/20 px-3 py-2 rounded-xl transition-all btn-glass-fluid"
+                  className="flex items-center justify-center gap-1.5 text-xs font-medium text-rose-500 hover:text-rose-600 bg-rose-500/10 dark:bg-rose-500/20 px-3 py-2 rounded-xl transition-all btn-glass-fluid shrink-0 w-full sm:w-auto cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>Reset Session Progress</span>
@@ -353,17 +353,17 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             </div>
 
             {/* Actions Footer */}
-            <div className="bg-amber-100/10 dark:bg-neutral-950/20 px-6 py-4 flex items-center justify-end gap-3 border-t border-amber-200/20 dark:border-neutral-800/50">
+            <div className="bg-amber-100/10 dark:bg-neutral-950/20 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-end gap-2.5 sm:gap-3 border-t border-amber-200/20 dark:border-neutral-800/50 shrink-0">
               <button
                 onClick={onClose}
-                className="px-4 py-2 text-xs font-medium text-neutral-500 hover:text-neutral-700 dark:text-neutral-450 dark:hover:text-neutral-250 rounded-xl transition-all btn-glass-fluid"
+                className="px-4 py-2 text-xs font-medium text-neutral-500 hover:text-neutral-700 dark:text-neutral-450 dark:hover:text-neutral-250 rounded-xl transition-all btn-glass-fluid cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 id="save-settings-btn"
                 onClick={handleSave}
-                className={`flex items-center gap-1.5 px-4.5 py-2 text-xs font-semibold text-white rounded-xl shadow-lg transition-all active:scale-95 duration-300 hover:scale-[1.03] ${
+                className={`flex items-center gap-1.5 px-4.5 py-2 text-xs font-semibold text-white rounded-xl shadow-lg transition-all active:scale-95 duration-300 hover:scale-[1.03] cursor-pointer ${
                   mode === 'focus'
                     ? 'bg-amber-500 hover:bg-amber-600 shadow-amber-500/30 border border-amber-400/20'
                     : mode === 'shortBreak'

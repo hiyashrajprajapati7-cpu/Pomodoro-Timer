@@ -229,7 +229,7 @@ export const FooterBanner = React.memo(function FooterBanner({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ type: 'spring', duration: 0.4 }}
-              className="relative w-full max-w-lg bg-neutral-900 border border-neutral-800 rounded-3xl p-6 md:p-8 text-neutral-200 shadow-2xl z-10 flex flex-col gap-5 overflow-hidden"
+              className="relative w-full max-w-lg max-h-[90dvh] bg-neutral-900 border border-neutral-800 rounded-3xl p-5 sm:p-6 md:p-8 text-neutral-200 shadow-2xl z-10 flex flex-col gap-4 sm:gap-5 overflow-hidden my-auto"
             >
               {/* Subtle gold accent background */}
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
@@ -296,7 +296,7 @@ export const FooterBanner = React.memo(function FooterBanner({
               </div>
 
               {/* Modal Body / Scrollable Area */}
-              <div className="max-h-[60vh] overflow-y-auto pr-1 text-sm text-neutral-400 font-sans leading-relaxed flex flex-col gap-4">
+              <div className="flex-1 overflow-y-auto pr-1 text-sm text-neutral-400 font-sans leading-relaxed flex flex-col gap-4">
                 {activeModal === 'about' && (
                   <div className="flex flex-col gap-4 font-sans text-xs leading-relaxed text-neutral-400">
                     <div className="text-[10px] font-mono text-neutral-500 mb-1">

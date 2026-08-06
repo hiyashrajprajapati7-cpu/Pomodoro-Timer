@@ -922,7 +922,7 @@ export default function App() {
                 <button
                   id="mode-focus-btn"
                   onClick={() => switchMode('focus')}
-                  className={`relative flex items-center justify-center px-4.5 py-2 text-xs font-semibold rounded-xl transition-all duration-300 z-10 cursor-pointer ${
+                  className={`relative flex items-center justify-center px-2.5 sm:px-4.5 py-2 text-[11px] sm:text-xs font-semibold rounded-xl transition-all duration-300 z-10 cursor-pointer ${
                     mode === 'focus'
                       ? 'text-amber-650 dark:text-amber-400 font-bold scale-102'
                       : 'text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200'
@@ -941,7 +941,7 @@ export default function App() {
                 <button
                   id="mode-short-btn"
                   onClick={() => switchMode('shortBreak')}
-                  className={`relative flex items-center justify-center px-4.5 py-2 text-xs font-semibold rounded-xl transition-all duration-300 z-10 cursor-pointer ${
+                  className={`relative flex items-center justify-center px-2.5 sm:px-4.5 py-2 text-[11px] sm:text-xs font-semibold rounded-xl transition-all duration-300 z-10 cursor-pointer ${
                     mode === 'shortBreak'
                       ? 'text-emerald-600 dark:text-emerald-400 font-bold scale-102'
                       : 'text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200'
@@ -960,7 +960,7 @@ export default function App() {
                 <button
                   id="mode-long-btn"
                   onClick={() => switchMode('longBreak')}
-                  className={`relative flex items-center justify-center px-4.5 py-2 text-xs font-semibold rounded-xl transition-all duration-300 z-10 cursor-pointer ${
+                  className={`relative flex items-center justify-center px-2.5 sm:px-4.5 py-2 text-[11px] sm:text-xs font-semibold rounded-xl transition-all duration-300 z-10 cursor-pointer ${
                     mode === 'longBreak'
                       ? 'text-indigo-600 dark:text-indigo-400 font-bold scale-102'
                       : 'text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200'
