@@ -562,7 +562,7 @@ export default function App() {
   const activeTask = tasks.find(t => t.isFocused && !t.completed);
 
   return (
-    <div className={`h-[100dvh] w-screen bg-[#FAF5EC] dark:bg-neutral-950 text-neutral-800 dark:text-neutral-100 transition-colors duration-500 font-sans relative flex flex-col ${isFullscreen ? 'overflow-hidden' : 'overflow-y-auto snap-y snap-mandatory scroll-smooth'}`}>
+    <div className={`h-[100dvh] w-full max-w-full overflow-x-hidden bg-[#FAF5EC] dark:bg-neutral-950 text-neutral-800 dark:text-neutral-100 transition-colors duration-500 font-sans relative flex flex-col ${isFullscreen ? 'overflow-hidden' : 'overflow-y-auto snap-y snap-mandatory scroll-smooth'}`}>
       <div id="top-marker" className="absolute top-0 left-0 w-0 h-0 pointer-events-none" />
       
       {/* 1. First Fold: Header + Main Timer Area */}
@@ -584,13 +584,13 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 md:px-12 py-3.5 sm:py-7 flex items-center justify-between border-b border-neutral-100/10"
+            className="w-full max-w-[1440px] mx-auto px-2.5 sm:px-8 md:px-12 py-3 sm:py-7 flex items-center justify-between border-b border-neutral-100/10 gap-1 sm:gap-2 overflow-hidden"
           >
             {/* Logo */}
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <span className="flex items-center justify-center w-8.5 h-8.5 rounded-xl bg-neutral-950 border border-neutral-800/80 shadow-[0_0_15px_rgba(234,179,8,0.5)] dark:shadow-[0_0_18px_rgba(234,179,8,0.65)] hover:shadow-[0_0_25px_rgba(234,179,8,0.85)] transition-all duration-500 select-none relative overflow-hidden group">
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              <span className="flex items-center justify-center w-7.5 h-7.5 sm:w-8.5 sm:h-8.5 rounded-xl bg-neutral-950 border border-neutral-800/80 shadow-[0_0_15px_rgba(234,179,8,0.5)] dark:shadow-[0_0_18px_rgba(234,179,8,0.65)] hover:shadow-[0_0_25px_rgba(234,179,8,0.85)] transition-all duration-500 select-none relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-yellow-500/10 to-transparent pointer-events-none" />
-                <svg viewBox="0 0 100 100" className="w-5 h-5 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.75)] animate-pulse" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 100 100" className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.75)] animate-pulse" fill="none" xmlns="http://www.w3.org/2000/svg">
                   {/* Top button/knob of the timer */}
                   <rect x="36" y="10" width="28" height="10" rx="5" fill="currentColor" />
                   {/* Small neck connecting knob to ring */}
@@ -601,7 +601,7 @@ export default function App() {
                   <line x1="50" y1="56" x2="68" y2="38" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
                 </svg>
               </span>
-              <h1 className={`text-xs sm:text-sm font-bold tracking-tight font-sans transition-all duration-500 ${
+              <h1 className={`text-[11px] min-[360px]:text-xs sm:text-sm font-bold tracking-tight font-sans transition-all duration-500 whitespace-nowrap ${
                 mode === 'focus'
                   ? 'text-amber-600 dark:text-amber-400 drop-shadow-[0_0_6px_rgba(245,158,11,0.45)]'
                   : mode === 'shortBreak'
@@ -613,7 +613,7 @@ export default function App() {
             </div>
 
             {/* Utility Controls Row */}
-            <div className="flex items-center gap-1 sm:gap-1.5">
+            <div className="flex items-center gap-0.5 sm:gap-1.5 shrink-0">
               {/* Daily Target Indicators */}
               <button
                 id="target-indicators"
@@ -627,7 +627,7 @@ export default function App() {
                   });
                 }}
                 title={`Daily Focus Target: ${todayCount} / ${settings.targetSessions} sessions`}
-                className={`group px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl flex items-center gap-1.5 sm:gap-2.5 transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent ${
+                className={`group px-1.5 sm:px-3 py-1 sm:py-2 rounded-xl flex items-center gap-1 sm:gap-2.5 transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent cursor-pointer ${
                   mode === 'focus'
                     ? 'hover:text-amber-600 hover:border-amber-500/35 dark:hover:text-amber-400 dark:hover:border-amber-400/35 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)]'
                     : mode === 'shortBreak'
@@ -635,7 +635,7 @@ export default function App() {
                     : 'hover:text-indigo-600 hover:border-indigo-500/35 dark:hover:text-indigo-400 dark:hover:border-indigo-400/35 hover:shadow-[0_0_12px_rgba(99,102,241,0.25)]'
                 }`}
               >
-                <div className="flex items-center gap-1">
+                <div className="hidden sm:flex items-center gap-1">
                   {targetArray.map((_, idx) => {
                     const isCompleted = idx < todayCount;
                     return (
@@ -654,7 +654,7 @@ export default function App() {
                     );
                   })}
                 </div>
-                <span className={`text-[10px] font-mono tracking-wider font-semibold text-neutral-500 dark:text-neutral-450 uppercase transition-all duration-300 ${
+                <span className={`text-[10px] sm:text-[10px] font-mono tracking-wider font-semibold text-neutral-500 dark:text-neutral-450 uppercase transition-all duration-300 ${
                   mode === 'focus'
                     ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]'
                     : mode === 'shortBreak'
@@ -670,7 +670,7 @@ export default function App() {
                 <button
                   onClick={requestNotificationPermission}
                   title="Enable browser notifications"
-                  className={`p-1.5 sm:p-2 rounded-xl text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300 btn-glass-fluid transition-all duration-300 active:scale-95 hover:scale-105 border border-transparent ${
+                  className={`p-1 sm:p-2 rounded-xl text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300 btn-glass-fluid transition-all duration-300 active:scale-95 hover:scale-105 border border-transparent cursor-pointer ${
                     mode === 'focus'
                       ? 'hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/30 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)]'
                       : mode === 'shortBreak'
@@ -678,7 +678,7 @@ export default function App() {
                       : 'hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-500/30 hover:shadow-[0_0_12px_rgba(99,102,241,0.25)]'
                   }`}
                 >
-                  <BellOff className="w-4 h-4" />
+                  <BellOff className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
               )}
 
@@ -691,7 +691,7 @@ export default function App() {
                   audioEngine.playSubtleClick();
                 }}
                 title="Focus sounds mixer"
-                className={`group p-1.5 sm:p-2 rounded-xl btn-glass-fluid transition-all duration-200 active:scale-95 hover:scale-105 border ${
+                className={`group p-1 sm:p-2 rounded-xl btn-glass-fluid transition-all duration-200 active:scale-95 hover:scale-105 border cursor-pointer ${
                   sounds.some(s => s.isPlaying)
                     ? mode === 'focus'
                       ? 'bg-amber-500/15 dark:bg-amber-400/25 border-amber-500/50 dark:border-amber-400/50 text-amber-600 dark:text-amber-400 font-bold shadow-[0_0_15px_rgba(245,158,11,0.45)]'
@@ -705,7 +705,7 @@ export default function App() {
                     : 'text-neutral-500 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-500/30 hover:shadow-[0_0_15px_rgba(99,102,241,0.35)] border-transparent'
                 }`}
               >
-                <Music className={`w-4 h-4 transition-all duration-200 group-hover:scale-110 ${
+                <Music className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-all duration-200 group-hover:scale-110 ${
                   sounds.some(s => s.isPlaying)
                     ? mode === 'focus'
                       ? 'text-amber-600 dark:text-amber-400 drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
@@ -731,7 +731,7 @@ export default function App() {
                   audioEngine.playSubtleClick();
                 }}
                 title={settings.theme === 'light' ? "Switch to Dark Mode" : "Switch to Light Mode"}
-                className={`group p-1.5 sm:p-2 rounded-xl text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 btn-glass-fluid transition-all duration-200 active:scale-95 hover:scale-105 border border-transparent ${
+                className={`group p-1 sm:p-2 rounded-xl text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 btn-glass-fluid transition-all duration-200 active:scale-95 hover:scale-105 border border-transparent cursor-pointer ${
                   mode === 'focus'
                     ? 'hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/30 hover:shadow-[0_0_15px_rgba(245,158,11,0.35)]'
                     : mode === 'shortBreak'
@@ -740,7 +740,7 @@ export default function App() {
                 }`}
               >
                 {settings.theme === 'light' ? (
-                  <Moon className={`w-4 h-4 transition-all duration-200 group-hover:scale-110 ${
+                  <Moon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-all duration-200 group-hover:scale-110 ${
                     mode === 'focus'
                       ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
                       : mode === 'shortBreak'
@@ -748,7 +748,7 @@ export default function App() {
                       : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.6)]'
                   }`} />
                 ) : (
-                  <Sun className={`w-4 h-4 transition-all duration-200 group-hover:scale-110 ${
+                  <Sun className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-all duration-200 group-hover:scale-110 ${
                     mode === 'focus'
                       ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
                       : mode === 'shortBreak'
@@ -766,7 +766,7 @@ export default function App() {
                   audioEngine.playSubtleClick();
                 }}
                 title="Timer and Shortcut settings"
-                className={`group p-1.5 sm:p-2 rounded-xl transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent ${
+                className={`group p-1 sm:p-2 rounded-xl transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent cursor-pointer ${
                   mode === 'focus'
                     ? 'hover:text-amber-600 hover:border-amber-500/35 dark:hover:text-amber-400 dark:hover:border-amber-400/35 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)]'
                     : mode === 'shortBreak'
@@ -774,7 +774,7 @@ export default function App() {
                     : 'hover:text-indigo-600 hover:border-indigo-500/35 dark:hover:text-indigo-400 dark:hover:border-indigo-400/35 hover:shadow-[0_0_12px_rgba(99,102,241,0.25)]'
                 }`}
               >
-                <Settings className={`w-4 h-4 transition-all duration-500 group-hover:rotate-45 text-neutral-500 dark:text-neutral-400 ${
+                <Settings className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-all duration-500 group-hover:rotate-45 text-neutral-500 dark:text-neutral-400 ${
                   mode === 'focus'
                     ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
                     : mode === 'shortBreak'
@@ -791,7 +791,7 @@ export default function App() {
                   audioEngine.playSubtleClick();
                 }}
                 title="Manage focus tasks"
-                className={`group p-1.5 sm:p-2 rounded-xl transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent relative ${
+                className={`group p-1 sm:p-2 rounded-xl transition-all duration-300 active:scale-95 hover:scale-105 btn-glass-fluid border border-transparent relative cursor-pointer ${
                   mode === 'focus'
                     ? 'hover:text-amber-600 hover:border-amber-500/35 dark:hover:text-amber-400 dark:hover:border-amber-400/35 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)]'
                     : mode === 'shortBreak'
@@ -799,7 +799,7 @@ export default function App() {
                     : 'hover:text-indigo-600 hover:border-indigo-500/35 dark:hover:text-indigo-400 dark:hover:border-indigo-400/35 hover:shadow-[0_0_12px_rgba(99,102,241,0.25)]'
                 }`}
               >
-                <ListTodo className={`w-4 h-4 transition-all duration-300 text-neutral-500 dark:text-neutral-400 ${
+                <ListTodo className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-all duration-300 text-neutral-500 dark:text-neutral-400 ${
                   mode === 'focus'
                     ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]'
                     : mode === 'shortBreak'
@@ -807,7 +807,7 @@ export default function App() {
                     : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.6)]'
                 }`} />
                 {tasks.filter(t => !t.completed).length > 0 && (
-                  <span className={`absolute -top-1 -right-1 flex h-4 min-w-[16px] px-1 items-center justify-center text-[8px] font-mono font-bold text-white rounded-full ${
+                  <span className={`absolute -top-1 -right-1 flex h-3.5 min-w-[14px] sm:h-4 sm:min-w-[16px] px-0.5 sm:px-1 items-center justify-center text-[7px] sm:text-[8px] font-mono font-bold text-white rounded-full ${
                     mode === 'focus'
                       ? 'bg-amber-500 shadow-[0_0_6px_rgba(245,158,11,0.6)]'
                       : mode === 'shortBreak'
